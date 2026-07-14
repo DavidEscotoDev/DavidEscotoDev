@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Escoto — Interactive Terminal</title>
+  <title>David Escoto — Terminal</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
       background: #0d1117;
-      color: #e6edf3;
+      color: #c9d1d9;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -48,105 +48,49 @@
       background: #0d1117;
       padding: 16px;
       overflow-y: auto;
-      min-height: 400px;
-      line-height: 1.6;
+      min-height: 500px;
+      line-height: 1.7;
+      cursor: text;
     }
-    .line { margin-bottom: 4px; white-space: pre-wrap; word-wrap: break-word; }
+    .line { margin-bottom: 2px; white-space: pre-wrap; word-wrap: break-word; }
     .line.banner { color: #58a6ff; font-weight: bold; }
-    .line.dim { color: #8b949e; }
+    .line.dim { color: #6e7681; }
     .line.success { color: #3fb950; }
     .line.warning { color: #d29922; }
     .line.error { color: #f85149; }
     .line.cmd { color: #58a6ff; }
-    .line.path { color: #a371f7; }
     .line.key { color: #ffa657; }
     .line.val { color: #c9d1d9; }
     .line.url { color: #58a6ff; text-decoration: underline; cursor: pointer; }
     .input-line {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 0;
+      margin-top: 4px;
     }
     .prompt { color: #58a6ff; white-space: nowrap; }
-    .prompt-path { color: #a371f7; }
-    .prompt-symbol { color: #58a6ff; }
+    .prompt-symbol { color: #c9d1d9; margin-right: 6px; }
     input.cmd-input {
       flex: 1;
       background: transparent;
       border: none;
       outline: none;
-      color: #e6edf3;
+      color: #c9d1d9;
       font-family: inherit;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.7;
+      caret-color: #58a6ff;
     }
     .cursor {
       display: inline-block;
-      width: 8px;
-      height: 18px;
+      width: 7px;
+      height: 16px;
       background: #58a6ff;
-      animation: blink 1s infinite;
+      animation: blink 1s step-end infinite;
       vertical-align: text-bottom;
-      margin-left: 2px;
     }
-    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .hidden { display: none !important; }
-    .input-bubble {
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      background: #161b22;
-      padding: 12px 16px;
-      margin: 12px 0 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: relative;
-    }
-    .input-bubble::before {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 32px;
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 8px solid #30363d;
-    }
-    .input-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -7px;
-      left: 33px;
-      width: 0;
-      height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 7px solid #161b22;
-    }
-    .input-bubble:focus-within {
-      border-color: #58a6ff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 3px rgba(88, 166, 255, 0.15);
-    }
-    .input-bubble:focus-within::before {
-      border-top-color: #58a6ff;
-    }
-    .prompt { color: #58a6ff; white-space: nowrap; }
-    .prompt-path { color: #a371f7; }
-    .prompt-symbol { color: #58a6ff; }
-    input.cmd-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #e6edf3;
-      font-family: inherit;
-      font-size: 14px;
-      line-height: 1.6;
-      min-width: 0;
-    }
     .suggestion {
       position: absolute;
       background: #161b22;
@@ -166,39 +110,36 @@
     }
     .suggestion-item:hover, .suggestion-item.active {
       background: #30363d;
-      color: #e6edf3;
+      color: #c9d1d9;
     }
-    .table { width: 100%; border-collapse: collapse; margin: 8px 0; }
-    .table th, .table td { padding: 6px 12px; text-align: left; border-bottom: 1px solid #30363d; }
+    .table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+    .table th, .table td { padding: 4px 10px; text-align: left; border-bottom: 1px solid #21262d; }
     .table th { color: #8b949e; font-weight: normal; }
     .table tr:hover { background: #161b22; }
-    .box { border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 8px 0; background: #161b22; }
-    .box-title { color: #58a6ff; margin-bottom: 8px; font-weight: bold; }
-    .repo-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #30363d; }
+    .repo-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #21262d; }
     .repo-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .repo-name { color: #58a6ff; font-weight: bold; }
-    .repo-desc { color: #8b949e; margin: 4px 0; }
-    .repo-meta { display: flex; gap: 16px; font-size: 12px; color: #8b949e; }
+    .repo-desc { color: #8b949e; margin: 4px 0 6px; }
+    .repo-meta { display: flex; gap: 8px; flex-wrap: wrap; }
     .tag { background: #238636; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 11px; }
-    .skill-bar { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
-    .skill-name { width: 180px; color: #c9d1d9; font-size: 13px; }
-    .skill-track { flex: 1; height: 6px; background: #30363d; border-radius: 3px; overflow: hidden; }
-    .skill-fill { height: 100%; background: linear-gradient(90deg, #58a6ff, #a371f7); border-radius: 3px; transition: width 0.5s ease; }
-    .skill-pct { width: 40px; text-align: right; color: #8b949e; font-size: 12px; }
+    .skill-row { display: flex; align-items: center; gap: 10px; margin: 4px 0; }
+    .skill-name { width: 160px; color: #c9d1d9; font-size: 13px; }
+    .skill-track { flex: 1; height: 5px; background: #21262d; border-radius: 3px; overflow: hidden; }
+    .skill-fill { height: 100%; background: #58a6ff; border-radius: 3px; }
+    .skill-pct { width: 36px; text-align: right; color: #6e7681; font-size: 12px; }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 16px;
       color: #484f58;
       font-size: 12px;
-      border-top: 1px solid #30363d;
-      margin-top: auto;
+      border-top: 1px solid #21262d;
     }
     footer a { color: #58a6ff; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
     @media (max-width: 600px) {
       .terminal { padding: 10px; }
       .output { padding: 12px; font-size: 13px; }
-      .skill-name { width: 120px; font-size: 12px; }
+      .skill-name { width: 110px; font-size: 12px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -210,99 +151,74 @@
         <span class="traffic-light tl-red"></span>
         <span class="traffic-light tl-yellow"></span>
         <span class="traffic-light tl-green"></span>
-        <span style="margin-left: 12px;">david-escoto-dev — Interactive Terminal</span>
+        <span style="margin-left: 12px;">david-escoto-dev — terminal</span>
       </div>
     </div>
     <div class="output" id="output"></div>
   </div>
   <footer>
-    <a href="https://github.com/DavidEscotoDev" target="_blank">GitHub</a> •
-    <a href="mailto:real.david.escoto@gmail.com">Email</a> •
-    <a href="https://linkedin.com/in/david-escoto-estrada-1ab5633b9" target="_blank">LinkedIn</a>
+    <a href="https://github.com/DavidEscotoDev" target="_blank">github</a>
+    &nbsp;&middot;&nbsp;
+    <a href="mailto:real.david.escoto@gmail.com">email</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://linkedin.com/in/david-escoto-estrada-1ab5633b9" target="_blank">linkedin</a>
   </footer>
 
 <script>
 const COMMANDS = {
-  help: {
-    desc: 'Show available commands',
-    fn: () => renderHelp()
-  },
-  repos: {
-    desc: 'List pinned repositories',
-    fn: () => renderRepos()
-  },
-  experience: {
-    desc: 'Show work experience & projects',
-    fn: () => renderExperience()
-  },
-  skills: {
-    desc: 'Display tech stack & capabilities',
-    fn: () => renderSkills()
-  },
-  contact: {
-    desc: 'Show contact information',
-    fn: () => renderContact()
-  }
+  help:      { desc: 'Show available commands',     fn: () => renderHelp() },
+  repos:     { desc: 'List pinned repositories',    fn: () => renderRepos() },
+  experience:{ desc: 'Show work experience',         fn: () => renderExperience() },
+  skills:    { desc: 'Display tech stack',           fn: () => renderSkills() },
+  contact:   { desc: 'Show contact information',    fn: () => renderContact() }
 };
 
 const REPOS = [
-  { name: 'Framework', stars: 1, lang: 'Python', desc: 'Production-grade multi-agent system for autonomous code gen, review, and testing.', topics: ['ai-agents', 'fastapi', 'llm', 'multi-agent'], url: 'https://github.com/DavidEscotoDev/Framework' },
-  { name: 'kalshi_bot', stars: 1, lang: 'Python', desc: 'Production-grade Kalshi trading bot with kill switches, Kelly sizing, VaR limits, and shadow-mode validation.', topics: ['async-python', 'financial-engineering', 'kalshi', 'prediction-markets'], url: 'https://github.com/DavidEscotoDev/kalshi_bot' },
-  { name: 'kalshi-pi-bot', stars: 0, lang: 'Python', desc: 'Kalshi trading algorithm optimized for Raspberry Pi deployment.', topics: ['raspberry-pi', 'trading', 'embedded'], url: 'https://github.com/DavidEscotoDev/kalshi-pi-bot' },
-  { name: 'doc-intel-api', stars: 0, lang: 'Python', desc: 'Document intelligence API.', topics: ['document-processing', 'api'], url: 'https://github.com/DavidEscotoDev/doc-intel-api' },
-  { name: 'PAPYRUS-AI', stars: 0, lang: 'Python', desc: 'New AI/ML project.', topics: ['ai', 'ml'], url: 'https://github.com/DavidEscotoDev/PAPYRUS-AI' }
+  { name:'Framework',       stars:1, lang:'Python', desc:'Production-grade multi-agent system for autonomous code gen, review, and testing.', topics:['ai-agents','fastapi','llm','multi-agent'], url:'https://github.com/DavidEscotoDev/Framework' },
+  { name:'kalshi_bot',      stars:1, lang:'Python', desc:'Production-grade Kalshi trading bot with kill switches, Kelly sizing, VaR limits, and shadow-mode validation.', topics:['async-python','financial-engineering','kalshi','prediction-markets'], url:'https://github.com/DavidEscotoDev/kalshi_bot' },
+  { name:'kalshi-pi-bot',   stars:0, lang:'Python', desc:'Kalshi trading algorithm optimized for Raspberry Pi deployment.', topics:['raspberry-pi','trading','embedded'], url:'https://github.com/DavidEscotoDev/kalshi-pi-bot' },
+  { name:'doc-intel-api',   stars:0, lang:'Python', desc:'Document intelligence API.', topics:['document-processing','api'], url:'https://github.com/DavidEscotoDev/doc-intel-api' },
+  { name:'PAPYRUS-AI',      stars:0, lang:'Python', desc:'AI/ML project.', topics:['ai','ml'], url:'https://github.com/DavidEscotoDev/PAPYRUS-AI' }
 ];
 
 const SKILLS = [
-  { category: 'Languages', items: [
-    { name: 'Python', pct: 95 },
-    { name: 'JavaScript', pct: 85 },
-    { name: 'TypeScript', pct: 80 },
-    { name: 'SQL', pct: 70 }
+  { category:'Languages', items:[
+    { name:'Python', pct:95 }, { name:'JavaScript', pct:85 },
+    { name:'TypeScript', pct:80 }, { name:'SQL', pct:70 }
   ]},
-  { category: 'AI/ML', items: [
-    { name: 'LLM Fine-tuning', pct: 90 },
-    { name: 'Multi-Agent Systems', pct: 90 },
-    { name: 'Agent Frameworks', pct: 85 },
-    { name: 'RAG', pct: 85 }
+  { category:'AI/ML', items:[
+    { name:'LLM Fine-tuning', pct:90 }, { name:'Multi-Agent Systems', pct:90 },
+    { name:'Agent Frameworks', pct:85 }, { name:'RAG', pct:85 }
   ]},
-  { category: 'Backend', items: [
-    { name: 'FastAPI', pct: 95 },
-    { name: 'Async Python', pct: 95 },
-    { name: 'WebSockets', pct: 85 },
-    { name: 'REST APIs', pct: 90 }
+  { category:'Backend', items:[
+    { name:'FastAPI', pct:95 }, { name:'Async Python', pct:95 },
+    { name:'WebSockets', pct:85 }, { name:'REST APIs', pct:90 }
   ]},
-  { category: 'FinTech', items: [
-    { name: 'Algorithmic Trading', pct: 85 },
-    { name: 'Risk Management', pct: 80 },
-    { name: 'Prediction Markets', pct: 90 },
-    { name: 'Kalshi API', pct: 95 }
+  { category:'FinTech', items:[
+    { name:'Algorithmic Trading', pct:85 }, { name:'Risk Management', pct:80 },
+    { name:'Prediction Markets', pct:90 }, { name:'Kalshi API', pct:95 }
   ]},
-  { category: 'DevOps', items: [
-    { name: 'Docker', pct: 80 },
-    { name: 'Raspberry Pi', pct: 85 },
-    { name: 'Git/GitHub', pct: 95 },
-    { name: 'Linux', pct: 90 }
+  { category:'DevOps', items:[
+    { name:'Docker', pct:80 }, { name:'Raspberry Pi', pct:85 },
+    { name:'Git/GitHub', pct:95 }, { name:'Linux', pct:90 }
   ]}
 ];
 
-const EXPERIENCE = [
-  {
-    role: 'Software Developer',
-    focus: 'AI Agent Frameworks & LLM Fine-tuning',
-    desc: 'Building robust, data-driven automation systems.',
-    projects: [
-      'Framework — Multi-agent coding agent (FastAPI + LLMs)',
-      'kalshi_bot — Production trading bot with risk management',
-      'kalshi-pi-bot — Embedded trading on Raspberry Pi'
-    ],
-    achievements: [
-      'Teen developer shipping production-grade systems',
-      'MIT licensed open source projects',
-      'Financial engineering + AI intersection'
-    ]
-  }
-];
+const EXPERIENCE = [{
+  role: 'Software Developer',
+  focus: 'AI Agent Frameworks & LLM Fine-tuning',
+  desc: 'Building robust, data-driven automation systems.',
+  projects: [
+    'Framework — Multi-agent coding agent (FastAPI + LLMs)',
+    'kalshi_bot — Production trading bot with risk management',
+    'kalshi-pi-bot — Embedded trading on Raspberry Pi'
+  ],
+  achievements: [
+    'Teen developer shipping production-grade systems',
+    'MIT licensed open source projects',
+    'Financial engineering + AI intersection'
+  ]
+}];
 
 let history = [];
 let historyIndex = -1;
@@ -319,337 +235,211 @@ function addLine(text, cls = '') {
   output.scrollTop = output.scrollHeight;
 }
 
-function addHTML(html, cls = '') {
+function addHTML(html) {
   const div = document.createElement('div');
-  div.className = 'line ' + cls;
   div.innerHTML = html;
   output.appendChild(div);
   output.scrollTop = output.scrollHeight;
 }
 
-function typeLine(line, cls, delay, callback) {
+function typeLine(text, cls, delay, cb) {
   let i = 0;
   const div = document.createElement('div');
   div.className = 'line ' + cls;
   output.appendChild(div);
-  
-  function typeChar() {
-    if (i < line.length) {
-      div.textContent += line[i];
-      i++;
+  (function tick() {
+    if (i < text.length) {
+      div.textContent += text[i++];
       output.scrollTop = output.scrollHeight;
-      setTimeout(typeChar, delay);
-    } else if (callback) {
-      callback();
-    }
-  }
-  typeChar();
+      setTimeout(tick, delay);
+    } else if (cb) cb();
+  })();
 }
 
 function renderBanner() {
-  const bannerLines = [
-    '██████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
-    '██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝',
-    '██████╔╝█████╗     ██║   ██████╔╝██║█████╔╝ █████╗  ███████╗',
-    '██╔═══╝ ██╔══╝     ██║   ██╔══██╗██║██╔═██╗ ██╔══╝  ╚════██║',
-    '██║     ███████╗   ██║   ██║  ██║██║██║  ██╗███████╗███████║',
-    '╚═╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝',
+  const lines = [
+    '███╗   ███╗ █████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
+    '████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝',
+    '██╔████╔██║███████║█████╗     ██║   ██████╔╝██║█████╔╝ █████╗  ███████╗',
+    '██║╚██╔╝██║██╔══██║██╔══╝     ██║   ██╔══██╗██║██╔═██╗ ██╔══╝  ╚════██║',
+    '██║ ╚═╝ ██║██║  ██║███████╗   ██║   ██║  ██║██║██║  ██╗███████╗███████║',
+    '╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝',
     '',
-    'Software Developer • AI Agent Frameworks • LLM Fine-tuning',
-    'North Bend, WA  |  Teen Builder',
-    '',
-    'Version: 1.0.0  |  Session: david-escoto-dev',
-    ''
+    '  Software Developer | AI Agent Frameworks | LLM Fine-tuning',
+    '  North Bend, WA | Teen Builder'
   ];
-  
-  let lineIndex = 0;
-  
-  function typeNextLine() {
-    if (lineIndex < bannerLines.length) {
-      const line = bannerLines[lineIndex];
-      const cls = lineIndex < 6 ? 'banner' : (line === '' ? '' : 'dim');
-      const delay = lineIndex < 6 ? 5 : (line === '' ? 0 : 15);
-      typeLine(line, cls, delay, () => {
-        lineIndex++;
-        typeNextLine();
-      });
+  let i = 0;
+  (function next() {
+    if (i < lines.length) {
+      const cls = i < 6 ? 'banner' : 'dim';
+      typeLine(lines[i], cls, i < 6 ? 8 : 12, () => { i++; next(); });
     } else {
+      addLine('');
       renderHelp();
+      addInput();
     }
-  }
-  
-  typeNextLine();
+  })();
 }
 
 function renderHelp() {
-  addHTML('<div class="box"><div class="box-title">Commands</div></div>', '');
-  const table = document.createElement('table');
-  table.className = 'table';
-  table.innerHTML = '<thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' +
-    Object.entries(COMMANDS).map(([cmd, c]) => `<tr><td class="cmd">/${cmd}</td><td>${c.desc}</td></tr>`).join('') +
-    '</tbody></table>';
-  output.appendChild(table);
-  output.scrollTop = output.scrollHeight;
+  const rows = Object.entries(COMMANDS)
+    .map(([cmd, c]) => '<tr><td style="color:#58a6ff">/' + cmd + '</td><td style="color:#8b949e">' + c.desc + '</td></tr>')
+    .join('');
+  addHTML('<table class="table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' + rows + '</tbody></table>');
 }
 
 function renderRepos() {
-  addHTML('<div class="box"><div class="box-title">Pinned Repositories</div></div>', '');
-  REPOS.forEach((repo, i) => {
-    const topics = repo.topics.map(t => `<span class="tag">${t}</span>`).join(' ');
-    addHTML(`
-      <div class="repo-item">
-        <div class="repo-name"><a href="${repo.url}" target="_blank" class="url">${repo.name}</a> <span class="dim">[${repo.stars}]</span> <span class="key">${repo.lang}</span></div>
-        <div class="repo-desc">${repo.desc}</div>
-        <div class="repo-meta">${topics}</div>
-      </div>
-    `, '');
+  REPOS.forEach(r => {
+    const tags = r.topics.map(t => '<span class="tag">' + t + '</span>').join(' ');
+    addHTML(
+      '<div class="repo-item">' +
+        '<span class="repo-name"><a href="' + r.url + '" target="_blank" class="url">' + r.name + '</a></span> ' +
+        '<span class="dim">[' + r.stars + '★]</span> ' +
+        '<span style="color:#ffa657">' + r.lang + '</span>' +
+        '<div class="repo-desc">' + r.desc + '</div>' +
+        '<div class="repo-meta">' + tags + '</div>' +
+      '</div>'
+    );
   });
 }
 
 function renderExperience() {
-  addHTML('<div class="box"><div class="box-title">Experience</div></div>', '');
-  EXPERIENCE.forEach(exp => {
-    addHTML(`<div class="key">${exp.role}</div>`, '');
-    addHTML(`<div class="dim">${exp.focus}</div>`, '');
-    addHTML(`<div class="val">${exp.desc}</div>`, '');
+  EXPERIENCE.forEach(e => {
+    addHTML('<div style="color:#ffa657">' + e.role + '</div>');
+    addHTML('<div style="color:#8b949e">' + e.focus + '</div>');
+    addHTML('<div>' + e.desc + '</div>');
     addLine('');
-    addLine('Key Projects:', 'key');
-    exp.projects.forEach(p => addLine(`  • ${p}`, 'val'));
+    addLine('  Key Projects:', 'key');
+    e.projects.forEach(p => addLine('    ' + p, 'val'));
     addLine('');
-    addLine('Achievements:', 'key');
-    exp.achievements.forEach(a => addLine(`  • ${a}`, 'val'));
-    addLine('');
+    addLine('  Achievements:', 'key');
+    e.achievements.forEach(a => addLine('    ' + a, 'val'));
   });
 }
 
 function renderSkills() {
-  addHTML('<div class="box"><div class="box-title">Tech Stack</div></div>', '');
   SKILLS.forEach(cat => {
-    addLine(`\n${cat.category}:`, 'key');
-    cat.items.forEach(skill => {
+    addLine(cat.category + ':', 'key');
+    cat.items.forEach(s => {
       const div = document.createElement('div');
-      div.className = 'line skill-bar';
-      div.innerHTML = `
-        <span class="skill-name">${skill.name}</span>
-        <div class="skill-track"><div class="skill-fill" style="width: ${skill.pct}%"></div></div>
-        <span class="skill-pct">${skill.pct}%</span>
-      `;
+      div.className = 'line skill-row';
+      div.innerHTML =
+        '<span class="skill-name">' + s.name + '</span>' +
+        '<div class="skill-track"><div class="skill-fill" style="width:' + s.pct + '%"></div></div>' +
+        '<span class="skill-pct">' + s.pct + '%</span>';
       output.appendChild(div);
     });
+    addLine('');
   });
   output.scrollTop = output.scrollHeight;
 }
 
 function renderContact() {
-  addHTML('<div class="box"><div class="box-title">Contact</div></div>', '');
-  addHTML(`
-    <table class="table">
-      <tbody>
-        <tr><td class="key">Email</td><td><a href="mailto:real.david.escoto@gmail.com" class="url">real.david.escoto@gmail.com</a></td></tr>
-        <tr><td class="key">GitHub</td><td><a href="https://github.com/DavidEscotoDev" target="_blank" class="url">github.com/DavidEscotoDev</a></td></tr>
-        <tr><td class="key">LinkedIn</td><td><a href="https://linkedin.com/in/david-escoto-estrada-1ab5633b9" target="_blank" class="url">linkedin.com/in/david-escoto-estrada-1ab5633b9</a></td></tr>
-        <tr><td class="key">Location</td><td class="val">North Bend, Washington</td></tr>
-      </tbody>
-    </table>
-  `, '');
+  addHTML(
+    '<table class="table"><tbody>' +
+      '<tr><td style="color:#ffa657">Email</td><td><a href="mailto:real.david.escoto@gmail.com" class="url">real.david.escoto@gmail.com</a></td></tr>' +
+      '<tr><td style="color:#ffa657">GitHub</td><td><a href="https://github.com/DavidEscotoDev" target="_blank" class="url">github.com/DavidEscotoDev</a></td></tr>' +
+      '<tr><td style="color:#ffa657">LinkedIn</td><td><a href="https://linkedin.com/in/david-escoto-estrada-1ab5633b9" target="_blank" class="url">linkedin.com/in/david-escoto-estrada-1ab5633b9</a></td></tr>' +
+      '<tr><td style="color:#ffa657">Location</td><td>North Bend, Washington</td></tr>' +
+    '</tbody></table>'
+  );
   addLine('');
-  addLine('"Building robust, data-driven automation."', 'dim');
-}
-
-function renderWhoami() {
-  addLine('david@github', 'path');
-  addLine('Software Developer — AI Agent Frameworks & LLM Fine-tuning', 'val');
-  addLine('Teen Builder | North Bend, WA', 'dim');
+  addLine('  "Building robust, data-driven automation."', 'dim');
 }
 
 function execute(cmdLine) {
   const parts = cmdLine.trim().split(/\s+/);
   if (!parts[0]) return;
   const cmd = parts[0].toLowerCase().replace(/^\//, '');
-  const args = parts.slice(1);
-
   if (COMMANDS[cmd]) {
-    addLine(`> /${cmd} ${args.join(' ')}`, 'cmd');
-    COMMANDS[cmd].fn(args);
+    addLine('$ /' + cmd, 'cmd');
+    COMMANDS[cmd].fn();
   } else {
-    addLine(`> /${cmd} ${args.join(' ')}`, 'cmd');
-    addLine(`Command not found: /${cmd}. Type /help for available commands.`, 'error');
+    addLine('$ /' + cmd, 'cmd');
+    addLine('command not found: /' + cmd + '  (type /help for commands)', 'error');
   }
   history.push(cmdLine.trim());
   historyIndex = history.length;
 }
 
-function showSuggestions(input) {
-  if (suggestionBox) suggestionBox.remove();
-  const base = input.toLowerCase().replace(/^\//, '');
+function showSuggestions(val) {
+  hideSuggestions();
+  const base = val.toLowerCase().replace(/^\//, '');
   const matches = Object.keys(COMMANDS).filter(c => c.startsWith(base));
   if (!matches.length) return;
-
   suggestionBox = document.createElement('div');
   suggestionBox.className = 'suggestion';
   matches.forEach((cmd, i) => {
     const item = document.createElement('div');
     item.className = 'suggestion-item' + (i === 0 ? ' active' : '');
     item.dataset.cmd = cmd;
-    item.textContent = `/${cmd} — ${COMMANDS[cmd].desc}`;
+    item.textContent = '/' + cmd + ' — ' + COMMANDS[cmd].desc;
     suggestionBox.appendChild(item);
   });
   document.body.appendChild(suggestionBox);
-  positionSuggestionBox();
+  const line = document.querySelector('.input-line');
+  if (line) {
+    const r = line.getBoundingClientRect();
+    suggestionBox.style.left = r.left + 'px';
+    suggestionBox.style.bottom = (window.innerHeight - r.top + 4) + 'px';
+  }
   currentSuggestion = 0;
-}
-
-function positionSuggestionBox() {
-  if (!suggestionBox) return;
-  const inputLine = document.querySelector('.input-bubble');
-  const rect = inputLine.getBoundingClientRect();
-  suggestionBox.style.left = rect.left + 'px';
-  suggestionBox.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
 }
 
 function hideSuggestions() {
   if (suggestionBox) { suggestionBox.remove(); suggestionBox = null; }
 }
 
-function selectSuggestion(dir) {
-  if (!suggestionBox) return;
-  const items = suggestionBox.querySelectorAll('.suggestion-item');
-  if (!items.length) return;
-  items[currentSuggestion].classList.remove('active');
-  currentSuggestion = (currentSuggestion + dir + items.length) % items.length;
-  items[currentSuggestion].classList.add('active');
-}
-
-function applySuggestion() {
-  if (!suggestionBox) return;
-  const items = suggestionBox.querySelectorAll('.suggestion-item');
-  if (items[currentSuggestion]) {
-    const cmd = items[currentSuggestion].dataset.cmd;
-    input.value = `/${cmd} `;
-    hideSuggestions();
-    input.focus();
-  }
-}
-
-function renderPrompt() {
+function addInput() {
   const line = document.createElement('div');
-  line.className = 'input-bubble';
-  line.innerHTML = `
-    <span class="prompt"><span class="prompt-path">david@github</span><span class="prompt-symbol"> ~</span></span>
-    <span class="prompt-symbol">></span>
-    <input type="text" class="cmd-input" id="cmdInput" autocomplete="off" spellcheck="false" placeholder="Type /help for commands...">
-    <span class="cursor" id="cursor"></span>
-  `;
+  line.className = 'input-line';
+  line.innerHTML =
+    '<span class="prompt">$</span>' +
+    '<input type="text" class="cmd-input" id="cmdInput" autocomplete="off" spellcheck="false" autofocus>';
   output.appendChild(line);
+  const inp = document.getElementById('cmdInput');
+  inp.focus();
   output.scrollTop = output.scrollHeight;
-  return document.getElementById('cmdInput');
-}
 
-let input = renderPrompt();
-
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    const val = input.value.trim();
-    hideSuggestions();
-    if (val) {
-      input.remove();
-      execute(val);
-      input = renderPrompt();
-      setupInput(input);
-    }
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    if (historyIndex > 0) {
-      historyIndex--;
-      input.value = history[historyIndex];
-    }
-  } else if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    if (historyIndex < history.length - 1) {
-      historyIndex++;
-      input.value = history[historyIndex];
-    } else {
-      historyIndex = history.length;
-      input.value = '';
-    }
-  } else if (e.key === 'Tab') {
-    e.preventDefault();
-    if (suggestionBox) {
-      applySuggestion();
-    } else {
-      const val = input.value.toLowerCase();
-      if (val.startsWith('/')) {
-        showSuggestions(val);
-      }
-    }
-  } else if (e.key === 'Escape') {
-    hideSuggestions();
-  }
-});
-
-input.addEventListener('input', (e) => {
-  const val = e.target.value;
-  if (val.startsWith('/')) {
-    showSuggestions(val);
-  } else {
-    hideSuggestions();
-  }
-});
-
-input.addEventListener('blur', () => {
-  setTimeout(hideSuggestions, 200);
-});
-
-setupInput(input);
-
-function setupInput(inp) {
-  inp.addEventListener('keydown', (e) => {
+  inp.addEventListener('keydown', function handler(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
       const val = inp.value.trim();
-      hideSuggestions();
-      if (val) {
-        inp.remove();
-        execute(val);
-        input = renderPrompt();
-        setupInput(input);
-      }
+      inp.closest('.input-line').remove();
+      if (val) execute(val);
+      addInput();
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      if (historyIndex > 0) {
-        historyIndex--;
-        inp.value = history[historyIndex];
-      }
+      if (historyIndex > 0) { historyIndex--; inp.value = history[historyIndex]; }
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      if (historyIndex < history.length - 1) {
-        historyIndex++;
-        inp.value = history[historyIndex];
-      } else {
-        historyIndex = history.length;
-        inp.value = '';
-      }
+      if (historyIndex < history.length - 1) { historyIndex++; inp.value = history[historyIndex]; }
+      else { historyIndex = history.length; inp.value = ''; }
     } else if (e.key === 'Tab') {
       e.preventDefault();
-      if (suggestionBox) applySuggestion();
-      else if (inp.value.toLowerCase().startsWith('/')) showSuggestions(inp.value);
+      if (suggestionBox) {
+        const items = suggestionBox.querySelectorAll('.suggestion-item');
+        if (items[currentSuggestion]) {
+          inp.value = '/' + items[currentSuggestion].dataset.cmd + ' ';
+          hideSuggestions();
+        }
+      } else if (inp.value.startsWith('/')) {
+        showSuggestions(inp.value);
+      }
     } else if (e.key === 'Escape') {
       hideSuggestions();
     }
   });
-  inp.addEventListener('input', (e) => {
-    const val = e.target.value;
-    if (val.startsWith('/')) showSuggestions(val);
+
+  inp.addEventListener('input', function() {
+    if (inp.value.startsWith('/')) showSuggestions(inp.value);
     else hideSuggestions();
   });
+
   inp.addEventListener('blur', () => setTimeout(hideSuggestions, 200));
-  inp.focus();
+  output.addEventListener('click', () => inp.focus());
 }
 
-window.addEventListener('resize', positionSuggestionBox);
-
-// Initial render
 renderBanner();
 </script>
 </body>
