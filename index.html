@@ -187,26 +187,6 @@ const COMMANDS = {
   contact: {
     desc: 'Show contact information',
     fn: () => renderContact()
-  },
-  clear: {
-    desc: 'Clear terminal output',
-    fn: () => { output.innerHTML = ''; }
-  },
-  banner: {
-    desc: 'Show welcome banner',
-    fn: () => renderBanner()
-  },
-  whoami: {
-    desc: 'Show current user info',
-    fn: () => renderWhoami()
-  },
-  date: {
-    desc: 'Show current date/time',
-    fn: () => addLine(new Date().toString(), 'dim')
-  },
-  echo: {
-    desc: 'Echo arguments',
-    fn: (args) => addLine(args.join(' '), 'val')
   }
 };
 
