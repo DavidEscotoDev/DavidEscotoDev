@@ -1,6 +1,6 @@
 <!--
   This is your PROFILE README. It goes in a repo named exactly after your
-  username (e.g. github.com/DavidEscotoDev/DavidEscotoDev) so GitHub shows it on your profile.
+  username (e.g. github.com/OCTOCAT/OCTOCAT) so GitHub shows it on your profile.
   Replace the ALL-CAPS placeholders. Widths 370/490 keep the portrait and info
   card the same height -- if you change the info card's H, re-match these.
 -->
@@ -13,11 +13,13 @@
 </tr>
 </table>
 
-## David Escoto
+## YOUR NAME
 
-**AI Agent Infrastructure developer · Backend developer · Machine learning especialist**
+**Your Title · Second Thing · Third Thing**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-DavidEscotoDev-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-escoto-estrada-1ab5633b9/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-yoursite.com-0d1117?style=for-the-badge&logo=vercel&logoColor=white)](https://YOURSITE.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-YOURHANDLE-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOURHANDLE)
+[![Instagram](https://img.shields.io/badge/Instagram-YOURHANDLE-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/YOURHANDLE)
 
 <br>
 

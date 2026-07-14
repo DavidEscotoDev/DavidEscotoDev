@@ -1,0 +1,47 @@
+name: Update profile art
+
+on:
+  schedule:
+    - cron: "15 3 * * *"  # daily at 03:15 UTC
+  workflow_dispatch:      # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-graph:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch contributions
+        env:
+          GH_PROFILE_USER: DavidEscotoDev
+        run: python scripts/fetch_contributions.py
+
+      - name: Render heatmap
+        run: python scripts/render_heatmap_svg.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet data/contributions.json contrib-heatmap.svg; then
+            git add data/contributions.json contrib-heatmap.svg
+            git commit -m "chore: update contribution graph $(date -u +%F)"
+            git push
+          else
+            echo "No changes to commit"
+          fi
