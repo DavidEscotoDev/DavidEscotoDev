@@ -546,6 +546,8 @@ input.addEventListener('blur', () => {
   setTimeout(hideSuggestions, 200);
 });
 
+setupInput(input);
+
 function setupInput(inp) {
   inp.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
