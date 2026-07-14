@@ -58,17 +58,11 @@
       line-height: 1.7;
       cursor: text;
     }
-    .input-container {
-      border-top: 1px solid #21262d;
-      padding: 8px 16px 12px;
-      background: #0d1117;
-    }
     .input-line {
       display: flex;
       align-items: center;
-      gap: 0;
     }
-    .prompt { color: #58a6ff; white-space: nowrap; margin-right: 8px; }
+    .prompt { color: #58a6ff; margin-right: 8px; }
     input.cmd-input {
       flex: 1;
       background: transparent;
@@ -153,12 +147,6 @@
     </div>
     <div class="terminal-body">
       <div class="output" id="output"></div>
-      <div class="input-container" id="inputContainer">
-        <div class="input-line">
-          <span class="prompt">$</span>
-          <input type="text" class="cmd-input" id="cmdInput" autocomplete="off" spellcheck="false" autofocus>
-        </div>
-      </div>
     </div>
   </div>
   <footer>
@@ -231,7 +219,7 @@ let suggestionBox = null;
 let currentSuggestion = -1;
 
 const output = document.getElementById('output');
-const input = document.getElementById('cmdInput');
+let input, resultArea;
 
 function addLine(target, text, cls) {
   const div = document.createElement('div');
@@ -247,6 +235,57 @@ function addHTML(target, html) {
 }
 
 function renderBanner() {
+  resultArea = document.createElement('div');
+  output.appendChild(resultArea);
+
+  const inputLine = document.createElement('div');
+  inputLine.className = 'input-line';
+  inputLine.style.borderBottom = '1px solid #21262d';
+  inputLine.style.paddingBottom = '8px';
+  inputLine.style.marginBottom = '8px';
+  inputLine.innerHTML =
+    '<span class="prompt">$</span>' +
+    '<input type="text" class="cmd-input" id="cmdInput" autocomplete="off" spellcheck="false" autofocus>';
+  output.insertBefore(inputLine, resultArea);
+  input = document.getElementById('cmdInput');
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = input.value.trim();
+      input.value = '';
+      if (val) execute(val);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyIndex > 0) { historyIndex--; input.value = history[historyIndex]; }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex < history.length - 1) { historyIndex++; input.value = history[historyIndex]; }
+      else { historyIndex = history.length; input.value = ''; }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      if (suggestionBox) {
+        const items = suggestionBox.querySelectorAll('.suggestion-item');
+        if (items[currentSuggestion]) {
+          input.value = '/' + items[currentSuggestion].dataset.cmd + ' ';
+          hideSuggestions();
+        }
+      } else if (input.value.startsWith('/')) {
+        showSuggestions(input.value);
+      }
+    } else if (e.key === 'Escape') {
+      hideSuggestions();
+    }
+  });
+
+  input.addEventListener('input', function() {
+    if (input.value.startsWith('/')) showSuggestions(input.value);
+    else hideSuggestions();
+  });
+
+  input.addEventListener('blur', () => setTimeout(hideSuggestions, 200));
+  output.addEventListener('click', () => input.focus());
+
   const lines = [
     '███╗   ███╗ █████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
     '████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝',
@@ -259,26 +298,26 @@ function renderBanner() {
     '  North Bend, WA | Teen Builder'
   ];
   lines.forEach((line, i) => {
-    addLine(output, line, i < 6 ? 'banner' : 'dim');
+    addLine(resultArea, line, i < 6 ? 'banner' : 'dim');
   });
-  addLine(output, '', '');
+  addLine(resultArea, '', '');
   renderHelp();
   input.focus();
-  output.scrollTop = 0;
+  resultArea.scrollIntoView();
 }
 
 function renderHelp() {
   const rows = Object.entries(COMMANDS)
     .map(([cmd, c]) => '<tr><td style="color:#58a6ff">/' + cmd + '</td><td style="color:#8b949e">' + c.desc + '</td></tr>')
     .join('');
-  addHTML(output, '<table class="table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' + rows + '</tbody></table>');
+  addHTML(resultArea, '<table class="table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' + rows + '</tbody></table>');
   output.scrollTop = output.scrollHeight;
 }
 
 function renderRepos() {
   REPOS.forEach(r => {
     const tags = r.topics.map(t => '<span class="tag">' + t + '</span>').join(' ');
-    addHTML(output,
+    addHTML(resultArea,
       '<div class="repo-item">' +
         '<span class="repo-name"><a href="' + r.url + '" target="_blank" class="url">' + r.name + '</a></span> ' +
         '<span class="dim">[' + r.stars + '*]</span> ' +
@@ -293,22 +332,22 @@ function renderRepos() {
 
 function renderExperience() {
   EXPERIENCE.forEach(e => {
-    addHTML(output, '<div style="color:#ffa657">' + e.role + '</div>');
-    addHTML(output, '<div style="color:#8b949e">' + e.focus + '</div>');
-    addHTML(output, '<div>' + e.desc + '</div>');
-    addLine(output, '', '');
-    addLine(output, '  Key Projects:', 'key');
-    e.projects.forEach(p => addLine(output, '    ' + p, 'val'));
-    addLine(output, '', '');
-    addLine(output, '  Achievements:', 'key');
-    e.achievements.forEach(a => addLine(output, '    ' + a, 'val'));
+    addHTML(resultArea, '<div style="color:#ffa657">' + e.role + '</div>');
+    addHTML(resultArea, '<div style="color:#8b949e">' + e.focus + '</div>');
+    addHTML(resultArea, '<div>' + e.desc + '</div>');
+    addLine(resultArea, '', '');
+    addLine(resultArea, '  Key Projects:', 'key');
+    e.projects.forEach(p => addLine(resultArea, '    ' + p, 'val'));
+    addLine(resultArea, '', '');
+    addLine(resultArea, '  Achievements:', 'key');
+    e.achievements.forEach(a => addLine(resultArea, '    ' + a, 'val'));
   });
   output.scrollTop = output.scrollHeight;
 }
 
 function renderSkills() {
   SKILLS.forEach(cat => {
-    addLine(output, cat.category + ':', 'key');
+    addLine(resultArea, cat.category + ':', 'key');
     cat.items.forEach(s => {
       const div = document.createElement('div');
       div.className = 'line skill-row';
@@ -316,15 +355,15 @@ function renderSkills() {
         '<span class="skill-name">' + s.name + '</span>' +
         '<div class="skill-track"><div class="skill-fill" style="width:' + s.pct + '%"></div></div>' +
         '<span class="skill-pct">' + s.pct + '%</span>';
-      output.appendChild(div);
+      resultArea.appendChild(div);
     });
-    addLine(output, '', '');
+    addLine(resultArea, '', '');
   });
   output.scrollTop = output.scrollHeight;
 }
 
 function renderContact() {
-  addHTML(output,
+  addHTML(resultArea,
     '<table class="table"><tbody>' +
       '<tr><td style="color:#ffa657">Email</td><td><a href="mailto:real.david.escoto@gmail.com" class="url">real.david.escoto@gmail.com</a></td></tr>' +
       '<tr><td style="color:#ffa657">GitHub</td><td><a href="https://github.com/DavidEscotoDev" target="_blank" class="url">github.com/DavidEscotoDev</a></td></tr>' +
@@ -332,8 +371,8 @@ function renderContact() {
       '<tr><td style="color:#ffa657">Location</td><td>North Bend, Washington</td></tr>' +
     '</tbody></table>'
   );
-  addLine(output, '', '');
-  addLine(output, '  "Building robust, data-driven automation."', 'dim');
+  addLine(resultArea, '', '');
+  addLine(resultArea, '  "Building robust, data-driven automation."', 'dim');
   output.scrollTop = output.scrollHeight;
 }
 
@@ -341,12 +380,12 @@ function execute(cmdLine) {
   const parts = cmdLine.trim().split(/\s+/);
   if (!parts[0]) return;
   const cmd = parts[0].toLowerCase().replace(/^\//, '');
-  output.innerHTML = '';
-  addLine(output, '$ /' + cmd, 'cmd');
+  resultArea.innerHTML = '';
+  addLine(resultArea, '$ /' + cmd, 'cmd');
   if (COMMANDS[cmd]) {
     COMMANDS[cmd].fn();
   } else {
-    addHTML(output, '<div style="color:#f85149">command not found: /' + cmd + ' <span style="color:#6e7681">(type /help for commands)</span></div>');
+    addHTML(resultArea, '<div style="color:#f85149">command not found: /' + cmd + ' <span style="color:#6e7681">(type /help for commands)</span></div>');
   }
   history.push(cmdLine.trim());
   historyIndex = history.length;
@@ -367,7 +406,7 @@ function showSuggestions(val) {
     suggestionBox.appendChild(item);
   });
   document.body.appendChild(suggestionBox);
-  const rect = input.getBoundingClientRect();
+  const rect = document.querySelector('.input-line').getBoundingClientRect();
   suggestionBox.style.left = rect.left + 'px';
   suggestionBox.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
   currentSuggestion = 0;
@@ -376,43 +415,6 @@ function showSuggestions(val) {
 function hideSuggestions() {
   if (suggestionBox) { suggestionBox.remove(); suggestionBox = null; }
 }
-
-input.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    const val = input.value.trim();
-    input.value = '';
-    if (val) execute(val);
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    if (historyIndex > 0) { historyIndex--; input.value = history[historyIndex]; }
-  } else if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    if (historyIndex < history.length - 1) { historyIndex++; input.value = history[historyIndex]; }
-    else { historyIndex = history.length; input.value = ''; }
-  } else if (e.key === 'Tab') {
-    e.preventDefault();
-    if (suggestionBox) {
-      const items = suggestionBox.querySelectorAll('.suggestion-item');
-      if (items[currentSuggestion]) {
-        input.value = '/' + items[currentSuggestion].dataset.cmd + ' ';
-        hideSuggestions();
-      }
-    } else if (input.value.startsWith('/')) {
-      showSuggestions(input.value);
-    }
-  } else if (e.key === 'Escape') {
-    hideSuggestions();
-  }
-});
-
-input.addEventListener('input', function() {
-  if (input.value.startsWith('/')) showSuggestions(input.value);
-  else hideSuggestions();
-});
-
-input.addEventListener('blur', () => setTimeout(hideSuggestions, 200));
-output.addEventListener('click', () => input.focus());
 
 renderBanner();
 </script>
