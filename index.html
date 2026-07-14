@@ -246,20 +246,6 @@ function addHTML(target, html) {
   target.appendChild(div);
 }
 
-function typeLine(target, text, cls, delay, cb) {
-  let i = 0;
-  const div = document.createElement('div');
-  div.className = 'line ' + cls;
-  target.appendChild(div);
-  (function tick() {
-    if (i < text.length) {
-      div.textContent += text[i++];
-      output.scrollTop = output.scrollHeight;
-      setTimeout(tick, delay);
-    } else if (cb) cb();
-  })();
-}
-
 function renderBanner() {
   const lines = [
     '███╗   ███╗ █████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
@@ -272,17 +258,13 @@ function renderBanner() {
     '  Software Developer | AI Agent Frameworks | LLM Fine-tuning',
     '  North Bend, WA | Teen Builder'
   ];
-  let i = 0;
-  (function next() {
-    if (i < lines.length) {
-      const cls = i < 6 ? 'banner' : 'dim';
-      typeLine(output, lines[i], cls, i < 6 ? 8 : 12, () => { i++; next(); });
-    } else {
-      addLine(output, '', '');
-      renderHelp();
-      input.focus();
-    }
-  })();
+  lines.forEach((line, i) => {
+    addLine(output, line, i < 6 ? 'banner' : 'dim');
+  });
+  addLine(output, '', '');
+  renderHelp();
+  input.focus();
+  output.scrollTop = 0;
 }
 
 function renderHelp() {
@@ -360,6 +342,7 @@ function execute(cmdLine) {
   if (!parts[0]) return;
   const cmd = parts[0].toLowerCase().replace(/^\//, '');
   output.innerHTML = '';
+  addLine(output, '$ /' + cmd, 'cmd');
   if (COMMANDS[cmd]) {
     COMMANDS[cmd].fn();
   } else {
