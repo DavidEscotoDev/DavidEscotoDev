@@ -292,21 +292,58 @@ function addHTML(html, cls = '') {
   output.scrollTop = output.scrollHeight;
 }
 
-function renderBanner() {
-  const banner = `██████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗
-██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝
-██████╔╝█████╗     ██║   ██████╔╝██║█████╔╝ █████╗  ███████╗
-██╔═══╝ ██╔══╝     ██║   ██╔══██╗██║██╔═██╗ ██╔══╝  ╚════██║
-██║     ███████╗   ██║   ██║  ██║██║██║  ██╗███████╗███████║
-╚═╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝
+function typeLine(line, cls, delay, callback) {
+  let i = 0;
+  const div = document.createElement('div');
+  div.className = 'line ' + cls;
+  output.appendChild(div);
+  
+  function typeChar() {
+    if (i < line.length) {
+      div.textContent += line[i];
+      i++;
+      output.scrollTop = output.scrollHeight;
+      setTimeout(typeChar, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
+  typeChar();
+}
 
-Software Developer • AI Agent Frameworks • LLM Fine-tuning
-North Bend, WA  |  Teen Builder`;
-  banner.split('\n').forEach(line => addLine(line, 'banner'));
-  addLine('');
-  addLine('Version: 1.0.0  |  Session: david-escoto-dev  |  Model: claude-sonnet-4', 'dim');
-  addLine('');
-  renderHelp();
+function renderBanner() {
+  const bannerLines = [
+    '██████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
+    '██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝',
+    '██████╔╝█████╗     ██║   ██████╔╝██║█████╔╝ █████╗  ███████╗',
+    '██╔═══╝ ██╔══╝     ██║   ██╔══██╗██║██╔═██╗ ██╔══╝  ╚════██║',
+    '██║     ███████╗   ██║   ██║  ██║██║██║  ██╗███████╗███████║',
+    '╚═╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝╚══════╝',
+    '',
+    'Software Developer • AI Agent Frameworks • LLM Fine-tuning',
+    'North Bend, WA  |  Teen Builder',
+    '',
+    'Version: 1.0.0  |  Session: david-escoto-dev',
+    ''
+  ];
+  
+  let lineIndex = 0;
+  
+  function typeNextLine() {
+    if (lineIndex < bannerLines.length) {
+      const line = bannerLines[lineIndex];
+      const cls = lineIndex < 6 ? 'banner' : (line === '' ? '' : 'dim');
+      const delay = lineIndex < 6 ? 5 : (line === '' ? 0 : 15);
+      typeLine(line, cls, delay, () => {
+        lineIndex++;
+        typeNextLine();
+      });
+    } else {
+      renderHelp();
+    }
+  }
+  
+  typeNextLine();
 }
 
 function renderHelp() {
