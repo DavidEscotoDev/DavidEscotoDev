@@ -279,7 +279,7 @@ function renderBanner() {
       typeLine(bannerEl, lines[i], cls, i < 6 ? 8 : 12, () => { i++; next(); });
     } else {
       addLine(bannerEl, '', '');
-      showHelp();
+      renderHelp();
       renderInput();
     }
   })();
