@@ -55,8 +55,6 @@
     .line { margin-bottom: 2px; white-space: pre-wrap; word-wrap: break-word; }
     .line.banner { color: #58a6ff; font-weight: bold; }
     .line.dim { color: #6e7681; }
-    .line.success { color: #3fb950; }
-    .line.warning { color: #d29922; }
     .line.error { color: #f85149; }
     .line.cmd { color: #58a6ff; }
     .line.key { color: #ffa657; }
@@ -68,8 +66,7 @@
       gap: 0;
       margin-top: 4px;
     }
-    .prompt { color: #58a6ff; white-space: nowrap; }
-    .prompt-symbol { color: #c9d1d9; margin-right: 6px; }
+    .prompt { color: #58a6ff; white-space: nowrap; margin-right: 6px; }
     input.cmd-input {
       flex: 1;
       background: transparent;
@@ -115,7 +112,6 @@
     .table { width: 100%; border-collapse: collapse; margin: 6px 0; }
     .table th, .table td { padding: 4px 10px; text-align: left; border-bottom: 1px solid #21262d; }
     .table th { color: #8b949e; font-weight: normal; }
-    .table tr:hover { background: #161b22; }
     .repo-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #21262d; }
     .repo-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .repo-name { color: #58a6ff; font-weight: bold; }
@@ -226,27 +222,26 @@ let suggestionBox = null;
 let currentSuggestion = -1;
 
 const output = document.getElementById('output');
+let bannerEl, cmdArea, inputLine;
 
-function addLine(text, cls = '') {
+function addLine(target, text, cls) {
   const div = document.createElement('div');
-  div.className = 'line ' + cls;
+  div.className = 'line ' + (cls || '');
   div.textContent = text;
-  output.appendChild(div);
-  output.scrollTop = output.scrollHeight;
+  target.appendChild(div);
 }
 
-function addHTML(html) {
+function addHTML(target, html) {
   const div = document.createElement('div');
   div.innerHTML = html;
-  output.appendChild(div);
-  output.scrollTop = output.scrollHeight;
+  target.appendChild(div);
 }
 
-function typeLine(text, cls, delay, cb) {
+function typeLine(target, text, cls, delay, cb) {
   let i = 0;
   const div = document.createElement('div');
   div.className = 'line ' + cls;
-  output.appendChild(div);
+  target.appendChild(div);
   (function tick() {
     if (i < text.length) {
       div.textContent += text[i++];
@@ -256,7 +251,16 @@ function typeLine(text, cls, delay, cb) {
   })();
 }
 
+function clearCmdArea() { cmdArea.innerHTML = ''; }
+
 function renderBanner() {
+  bannerEl = document.createElement('div');
+  output.appendChild(bannerEl);
+  cmdArea = document.createElement('div');
+  output.appendChild(cmdArea);
+  inputLine = document.createElement('div');
+  output.appendChild(inputLine);
+
   const lines = [
     '███╗   ███╗ █████╗ ███████╗████████╗██████╗ ██╗██╗  ██╗███████╗███████╗',
     '████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║ ██╔╝██╔════╝██╔════╝',
@@ -272,11 +276,11 @@ function renderBanner() {
   (function next() {
     if (i < lines.length) {
       const cls = i < 6 ? 'banner' : 'dim';
-      typeLine(lines[i], cls, i < 6 ? 8 : 12, () => { i++; next(); });
+      typeLine(bannerEl, lines[i], cls, i < 6 ? 8 : 12, () => { i++; next(); });
     } else {
-      addLine('');
-      renderHelp();
-      addInput();
+      addLine(bannerEl, '', '');
+      showHelp();
+      renderInput();
     }
   })();
 }
@@ -285,16 +289,16 @@ function renderHelp() {
   const rows = Object.entries(COMMANDS)
     .map(([cmd, c]) => '<tr><td style="color:#58a6ff">/' + cmd + '</td><td style="color:#8b949e">' + c.desc + '</td></tr>')
     .join('');
-  addHTML('<table class="table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' + rows + '</tbody></table>');
+  addHTML(cmdArea, '<table class="table"><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>' + rows + '</tbody></table>');
 }
 
 function renderRepos() {
   REPOS.forEach(r => {
     const tags = r.topics.map(t => '<span class="tag">' + t + '</span>').join(' ');
-    addHTML(
+    addHTML(cmdArea,
       '<div class="repo-item">' +
         '<span class="repo-name"><a href="' + r.url + '" target="_blank" class="url">' + r.name + '</a></span> ' +
-        '<span class="dim">[' + r.stars + '★]</span> ' +
+        '<span class="dim">[' + r.stars + '*]</span> ' +
         '<span style="color:#ffa657">' + r.lang + '</span>' +
         '<div class="repo-desc">' + r.desc + '</div>' +
         '<div class="repo-meta">' + tags + '</div>' +
@@ -305,21 +309,21 @@ function renderRepos() {
 
 function renderExperience() {
   EXPERIENCE.forEach(e => {
-    addHTML('<div style="color:#ffa657">' + e.role + '</div>');
-    addHTML('<div style="color:#8b949e">' + e.focus + '</div>');
-    addHTML('<div>' + e.desc + '</div>');
-    addLine('');
-    addLine('  Key Projects:', 'key');
-    e.projects.forEach(p => addLine('    ' + p, 'val'));
-    addLine('');
-    addLine('  Achievements:', 'key');
-    e.achievements.forEach(a => addLine('    ' + a, 'val'));
+    addHTML(cmdArea, '<div style="color:#ffa657">' + e.role + '</div>');
+    addHTML(cmdArea, '<div style="color:#8b949e">' + e.focus + '</div>');
+    addHTML(cmdArea, '<div>' + e.desc + '</div>');
+    addLine(cmdArea, '', '');
+    addLine(cmdArea, '  Key Projects:', 'key');
+    e.projects.forEach(p => addLine(cmdArea, '    ' + p, 'val'));
+    addLine(cmdArea, '', '');
+    addLine(cmdArea, '  Achievements:', 'key');
+    e.achievements.forEach(a => addLine(cmdArea, '    ' + a, 'val'));
   });
 }
 
 function renderSkills() {
   SKILLS.forEach(cat => {
-    addLine(cat.category + ':', 'key');
+    addLine(cmdArea, cat.category + ':', 'key');
     cat.items.forEach(s => {
       const div = document.createElement('div');
       div.className = 'line skill-row';
@@ -327,15 +331,14 @@ function renderSkills() {
         '<span class="skill-name">' + s.name + '</span>' +
         '<div class="skill-track"><div class="skill-fill" style="width:' + s.pct + '%"></div></div>' +
         '<span class="skill-pct">' + s.pct + '%</span>';
-      output.appendChild(div);
+      cmdArea.appendChild(div);
     });
-    addLine('');
+    addLine(cmdArea, '', '');
   });
-  output.scrollTop = output.scrollHeight;
 }
 
 function renderContact() {
-  addHTML(
+  addHTML(cmdArea,
     '<table class="table"><tbody>' +
       '<tr><td style="color:#ffa657">Email</td><td><a href="mailto:real.david.escoto@gmail.com" class="url">real.david.escoto@gmail.com</a></td></tr>' +
       '<tr><td style="color:#ffa657">GitHub</td><td><a href="https://github.com/DavidEscotoDev" target="_blank" class="url">github.com/DavidEscotoDev</a></td></tr>' +
@@ -343,23 +346,23 @@ function renderContact() {
       '<tr><td style="color:#ffa657">Location</td><td>North Bend, Washington</td></tr>' +
     '</tbody></table>'
   );
-  addLine('');
-  addLine('  "Building robust, data-driven automation."', 'dim');
+  addLine(cmdArea, '', '');
+  addLine(cmdArea, '  "Building robust, data-driven automation."', 'dim');
 }
 
 function execute(cmdLine) {
   const parts = cmdLine.trim().split(/\s+/);
   if (!parts[0]) return;
   const cmd = parts[0].toLowerCase().replace(/^\//, '');
+  clearCmdArea();
   if (COMMANDS[cmd]) {
-    addLine('$ /' + cmd, 'cmd');
     COMMANDS[cmd].fn();
   } else {
-    addLine('$ /' + cmd, 'cmd');
-    addLine('command not found: /' + cmd + '  (type /help for commands)', 'error');
+    addHTML(cmdArea, '<div style="color:#f85149">command not found: /' + cmd + ' <span style="color:#6e7681">(type /help for commands)</span></div>');
   }
   history.push(cmdLine.trim());
   historyIndex = history.length;
+  output.scrollTop = output.scrollHeight;
 }
 
 function showSuggestions(val) {
@@ -390,24 +393,22 @@ function hideSuggestions() {
   if (suggestionBox) { suggestionBox.remove(); suggestionBox = null; }
 }
 
-function addInput() {
-  const line = document.createElement('div');
-  line.className = 'input-line';
-  line.innerHTML =
+function renderInput() {
+  inputLine.innerHTML = '';
+  inputLine.className = 'input-line';
+  inputLine.innerHTML =
     '<span class="prompt">$</span>' +
     '<input type="text" class="cmd-input" id="cmdInput" autocomplete="off" spellcheck="false" autofocus>';
-  output.appendChild(line);
   const inp = document.getElementById('cmdInput');
   inp.focus();
   output.scrollTop = output.scrollHeight;
 
-  inp.addEventListener('keydown', function handler(e) {
+  inp.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
       const val = inp.value.trim();
-      inp.closest('.input-line').remove();
+      inp.value = '';
       if (val) execute(val);
-      addInput();
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (historyIndex > 0) { historyIndex--; inp.value = history[historyIndex]; }
@@ -437,8 +438,12 @@ function addInput() {
   });
 
   inp.addEventListener('blur', () => setTimeout(hideSuggestions, 200));
-  output.addEventListener('click', () => inp.focus());
 }
+
+output.addEventListener('click', () => {
+  const inp = document.getElementById('cmdInput');
+  if (inp) inp.focus();
+});
 
 renderBanner();
 </script>
