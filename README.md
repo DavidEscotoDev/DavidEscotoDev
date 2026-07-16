@@ -1,14 +1,41 @@
-David Escoto
-16‑year‑old developer · Python enthusiast · AI/ML hobbyist
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=David%20Escoto&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=16-year-old%20Developer%20%7C%20Python%20%7C%20AI%2FML%20%7C%20Trading%20Bots&descAlignY=55&descAlign=62" alt="header" />
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=8B5CF6&center=true&vCenter=true&width=700&lines=Self-taught+Python+developer;Building+trading+bots+and+AI+tools;Learning+distributed+systems+and+MLOps;Open+to+mentorship+and+collaboration" alt="typing animation" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/High%20School-Developer-8B5CF6?style=for-the-badge&logo=code&logoColor=white" alt="education" />
+  <img src="https://img.shields.io/badge/Self--Taught-16%20years%20old-8B5CF6?style=for-the-badge&logo=lightbulb&logoColor=white" alt="age" />
+</p>
+
+<p align="center">
+  <a href="mailto:real.david.escoto@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="email" /></a>
+  <a href="https://github.com/DavidEscotoDev" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="github" /></a>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=DavidEscotoDev&color=8B5CF6&style=for-the-badge&label=Profile+Views" alt="profile views" />
+  <img src="https://img.shields.io/github/followers/DavidEscotoDev?color=8B5CF6&style=for-the-badge&logo=github&logoColor=white" alt="followers" />
+  <img src="https://img.shields.io/github/stars/DavidEscotoDev?color=8B5CF6&style=for-the-badge&logo=github&logoColor=white" alt="stars" />
+</p>
 
 ---
 
 ### About Me
-I am a self‑taught programmer who started coding at 13. My focus is on building practical tools with Python, especially around data‑driven applications, trading algorithms, and lightweight AI services. I enjoy turning ideas into working prototypes, learning new libraries, and sharing what I build on GitHub.
 
-**Currently learning** – advanced Python async patterns, model‑serving with FastAPI, and basics of MLOps.
+Self-taught developer who started coding at 13. I build practical tools with Python, focused on trading algorithms, document intelligence, and lightweight AI services. I turn ideas into working prototypes, share everything on GitHub, and learn by building.
 
-**Open to** – mentorship, collaboration on open‑source Python projects, and internship‑style opportunities where I can contribute code and grow.
+- **Python** – FastAPI, asyncio, pandas, NumPy, scikit-learn
+- **Trading** – Kalshi API, risk management, Kelly sizing, VaR limits
+- **AI / ML** – ONNX Runtime, HuggingFace Transformers, FAISS, RAG pipelines
+- **DevOps** – Docker, GitHub Actions, Raspberry Pi deployments
+
+**Currently learning** – advanced async patterns, Kubernetes basics, MLOps with MLflow.
+
+**Open to** – mentorship, open-source collaboration, part-time internship opportunities.
 
 ---
 
@@ -18,101 +45,113 @@ I am a self‑taught programmer who started coding at 13. My focus is on buildin
 |----------|-------------------|
 | Languages | Python (3.10+), Bash |
 | Web / API | FastAPI, Uvicorn, Pydantic, HTTPX |
-| Data / ML | pandas, NumPy, scikit‑learn, HuggingFace Transformers (basic), ONNX Runtime |
-| Trading / Finance | ccxt (for exchange APIs), custom risk‑management modules |
-| DevOps / CI | GitHub Actions, Docker (basic), pytest, black, ruff |
-| Version Control | Git, GitHub (issues, projects, actions) |
-| Others | Raspberry Pi (headless), Linux basics, SQLite / PostgreSQL (intro) |
+| Data / ML | pandas, NumPy, scikit-learn, HuggingFace Transformers, ONNX Runtime |
+| Trading / Finance | Kalshi API, ccxt, custom risk modules |
+| DevOps / CI | Docker, GitHub Actions, pytest, black, ruff |
+| Hardware | Raspberry Pi (Pi Zero 2 W, Pi 4), headless Linux |
+| Databases | SQLite, PostgreSQL (intro) |
+
+---
+
+### AI / ML Expertise
+
+| Domain | Level | Details |
+|--------|-------|---------|
+| Document Intelligence | Intermediate | OCR pipelines, layout analysis, pdfplumber, Tesseract |
+| LLM Integration | Beginner–Intermediate | OpenAI API, RAG with FAISS, prompt engineering |
+| Model Serving | Intermediate | FastAPI + ONNX Runtime, Dockerised inference |
+| Trading Algorithms | Intermediate | Kelly criterion, VaR, backtesting, shadow-mode validation |
+| Computer Vision | Beginner | Basic OCR, image preprocessing, Pillow |
 
 ---
 
 ### Featured Projects
 
 <details>
-<summary><strong>doc‑intel‑api</strong> – Document Intelligence REST API</summary>
+<summary><strong>doc-intel-api</strong> – Document Intelligence REST API</summary>
 
-**Description** – A FastAPI service that extracts structured data from PDFs and images using OCR and layout analysis. Designed for easy deployment on a Raspberry Pi or any low‑cost server.
+**Description** – FastAPI service that extracts structured data from PDFs and images using OCR and layout analysis. Designed for deployment on a Raspberry Pi.
 
 | Aspect | Details |
 |--------|---------|
 | Stack | Python, FastAPI, Tesseract, pdfplumber, Pillow, Docker |
-| Scale | Handles ~200 requests/min on a Pi 4 (4 GB) |
-| Performance | Avg latency 350 ms per page; CPU‑only |
-| Security | Input validation, file‑type whitelist, rate limiting |
-| Repo | https://github.com/DavidEscotoDev/doc-intel-api |
+| Scale | ~200 requests/min on Pi 4 (4 GB) |
+| Performance | Avg 350ms per page, CPU-only |
+| Security | Input validation, file-type whitelist, rate limiting |
+| Repo | [github.com/DavidEscotoDev/doc-intel-api](https://github.com/DavidEscotoDev/doc-intel-api) |
 
-*Built to learn async request handling, background workers, and containerising ML‑light workloads.*
+Built to learn async request handling, background workers, and containerising ML-light workloads.
 </details>
 
 <details>
-<summary><strong>Framework</strong> – Multi‑Agent Coding Assistant</summary>
+<summary><strong>Framework</strong> – Multi-Agent Coding Assistant</summary>
 
-**Description** – A lightweight framework for orchestrating LLM‑based agents that can generate, review, and test code autonomously. Uses FastAPI for the control plane and a sandboxed execution environment.
+**Description** – Lightweight framework for orchestrating LLM-based agents that generate, review, and test code autonomously. FastAPI control plane with sandboxed execution.
 
 | Aspect | Details |
 |--------|---------|
-| Stack | Python, FastAPI, asyncio, Docker sandbox, OpenAI‑compatible API client |
-| Scale | Tested with 5 concurrent agents; extensible to more |
-| Performance | Agent turnaround < 2 s for simple tasks |
-| Safety | Code execution isolated in containers; static analysis hooks |
-| Repo | https://github.com/DavidEscotoDev/Framework |
+| Stack | Python, FastAPI, asyncio, Docker sandbox, OpenAI-compatible API |
+| Scale | 5 concurrent agents tested |
+| Performance | Agent turnaround < 2s |
+| Safety | Code execution isolated in containers, static analysis hooks |
+| Repo | [github.com/DavidEscotoDev/Framework](https://github.com/DavidEscotoDev/Framework) |
 
-*Explores agent‑orchestration patterns, prompt engineering, and safe code execution.*
+Explores agent-orchestration patterns, prompt engineering, and safe code execution.
 </details>
 
 <details>
-<summary><strong>kalshi‑pi‑bot</strong> – Kalshi Trading Bot for Raspberry Pi</summary>
+<summary><strong>kalshi-pi-bot</strong> – Trading Bot for Raspberry Pi</summary>
 
-**Description** – A headless trading bot that runs on a Raspberry Pi, connecting to the Kalshi prediction‑market API. Implements order placement, position tracking, and basic risk controls.
+**Description** – Headless trading bot running on a Raspberry Pi, connecting to Kalshi prediction-market API. Order placement, position tracking, basic risk controls.
 
 | Aspect | Details |
 |--------|---------|
-| Stack | Python, asyncio, aiohttp, SQLite, systemd service |
-| Scale | Runs 24/7 on Pi Zero 2 W; < 5 % CPU |
-| Reliability | Automatic reconnect, exponential back‑off, health‑check endpoint |
-| Repo | https://github.com/DavidEscotoDev/kalshi-pi-bot |
+| Stack | Python, asyncio, aiohttp, SQLite, systemd |
+| Scale | 24/7 on Pi Zero 2 W, < 5% CPU |
+| Reliability | Auto-reconnect, exponential backoff, health-check endpoint |
+| Repo | [github.com/DavidEscotoDev/kalshi-pi-bot](https://github.com/DavidEscotoDev/kalshi-pi-bot) |
 
-*First project that combined networking, persistent state, and hardware constraints.*
+First project combining networking, persistent state, and hardware constraints.
 </details>
 
 <details>
-<summary><strong>kalshi_bot</strong> – Advanced Kalshi Trading Bot</summary>
+<summary><strong>kalshi_bot</strong> – Advanced Trading Bot</summary>
 
-**Description** – A more sophisticated version with Kelly‑criterion position sizing, Value‑at‑Risk limits, kill‑switches, and a shadow‑mode validator that simulates trades before committing real capital.
+**Description** – Sophisticated version with Kelly-criterion sizing, Value-at-Risk limits, kill-switches, and shadow-mode validator that simulates trades before committing real capital.
 
 | Aspect | Details |
 |--------|---------|
-| Stack | Python, asyncio, pandas, NumPy, PostgreSQL, Prometheus metrics |
-| Scale | Handles 100+ markets simultaneously; sub‑second order latency |
-| Risk Controls | Kelly sizing, VaR 95 % limit, max‑drawdown guard, audit log |
-| Repo | https://github.com/DavidEscotoDev/kalshi_bot |
+| Stack | Python, asyncio, pandas, NumPy, PostgreSQL, Prometheus |
+| Scale | 100+ markets simultaneously, sub-second order latency |
+| Risk Controls | Kelly sizing, VaR 95%, max-drawdown guard, audit log |
+| Repo | [github.com/DavidEscotoDev/kalshi_bot](https://github.com/DavidEscotoDev/kalshi_bot) |
 
-*Focus on quantitative finance concepts, rigorous testing, and observability.*
+Focus on quantitative finance, rigorous testing, and observability.
 </details>
 
 <details>
-<summary><strong>PAPYRUS‑AI</strong> – Experimental LLM‑Powered Document Assistant</summary>
+<summary><strong>PAPYRUS-AI</strong> – LLM-Powered Document Assistant</summary>
 
-**Description** – Early prototype that lets users ask natural‑language questions over a collection of PDFs. Uses a small open‑source LLM via ONNX Runtime for on‑device inference.
+**Description** – Prototype for natural-language questions over PDF collections. Uses small open-source LLM via ONNX Runtime for on-device inference.
 
 | Aspect | Details |
 |--------|---------|
-| Stack | Python, ONNX Runtime, FastAPI, FAISS (vector index), Streamlit UI |
-| Scale | Indexes ~1 k documents on a laptop; query latency ~1 s |
-| Goal | Learn RAG pipeline, model export, and lightweight serving |
-| Repo | https://github.com/DavidEscotoDev/PAPYRUS-AI |
+| Stack | Python, ONNX Runtime, FastAPI, FAISS, Streamlit |
+| Scale | ~1k documents on laptop, ~1s query latency |
+| Goal | Learn RAG pipeline, model export, lightweight serving |
+| Repo | [github.com/DavidEscotoDev/PAPYRUS-AI](https://github.com/DavidEscotoDev/PAPYRUS-AI) |
 
-*Work‑in‑progress; mainly a learning vehicle for retrieval‑augmented generation.*
+Work-in-progress learning vehicle for retrieval-augmented generation.
 </details>
 
 ---
 
-### Experience (Self‑Directed)
+### Experience
 
 | Period | Role | Highlights |
 |--------|------|------------|
-| 2023 – Present | Independent Developer | Designed, coded, and deployed the five projects above; wrote CI pipelines; maintained documentation; practiced test‑driven development. |
-| 2022 – 2023 | High‑School Coding Club Lead | Organized weekly Python workshops; mentored peers on Git/GitHub basics; built a club website with Flask. |
+| 2023 – Present | Independent Developer | Built and deployed 5+ projects; wrote CI pipelines; maintained docs; test-driven development. |
+| 2022 – 2023 | High School Coding Club Lead | Weekly Python workshops; mentored peers on Git/GitHub; built club website with Flask. |
 
 ---
 
@@ -120,66 +159,105 @@ I am a self‑taught programmer who started coding at 13. My focus is on buildin
 
 | Recognition | Details |
 |-------------|---------|
-| GitHub **Arctic Code Vault** Contributor | Code archived in the 2025 snapshot. |
-| **First‑Place** – School Hackathon (2024) | Built a real‑time sensor dashboard on Raspberry Pi. |
-| **Pythonista** Badge (GitHub) | 100+ commits across public repos in 2025. |
+| GitHub Arctic Code Vault Contributor | Code archived in 2025 snapshot. |
+| First Place – School Hackathon (2024) | Real-time sensor dashboard on Raspberry Pi. |
+| Pythonista Badge (GitHub) | 100+ commits across public repos in 2025. |
 
 ---
 
 ### Certifications
 
-- **Python Institute – PCEP (Certified Entry‑Level Python Programmer)** – 2024
+- **Python Institute – PCEP** (Certified Entry-Level Python Programmer) – 2024
 - **freeCodeCamp – Scientific Computing with Python** – 2023
 
 ---
 
 ### Coding Profiles
 
-- LeetCode – https://leetcode.com/DavidEscotoDev (≈150 problems solved)
-- Codeforces – https://codeforces.com/profile/DavidEscotoDev (rating ~1300)
+- LeetCode – [leetcode.com/DavidEscotoDev](https://leetcode.com/DavidEscotoDev)
+- Codeforces – [codeforces.com/profile/DavidEscotoDev](https://codeforces.com/profile/DavidEscotoDev)
 
 ---
 
 ### GitHub Analytics
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=DavidEscotoDev&layout=compact&theme=tokyonight&hide_border=true)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="github stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=DavidEscotoDev&theme=tokyonight&hide_border=true" alt="streak stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DavidEscotoDev&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="top languages" />
+</p>
+
+---
+
+### GitHub Trophies
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=DavidEscotoDev&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&column=7" alt="trophies" />
+</p>
 
 ---
 
 ### Contribution Activity
 
-![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=DavidEscotoDev&theme=tokyo-night&hide_border=true)
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=DavidEscotoDev&theme=tokyo-night&hide_border=true&area=true&color=8B5CF6&line=8B5CF6&point=FFFFFF" alt="activity graph" />
+</p>
 
 ---
 
-### Current Focus (YAML)
+### Contribution Snake
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DavidEscotoDev/DavidEscotoDev/output/github-contribution-grid-snake-dark.svg" alt="snake animation" />
+</p>
+
+---
+
+### Current Focus
 
 ```yaml
 learning:
   - "Advanced async patterns (asyncio, trio)"
   - "Model serving with FastAPI + ONNX Runtime"
-  - "Basics of Kubernetes for hobby clusters"
+  - "Kubernetes basics for hobby clusters"
 building:
-  - "Extend kalshi_bot with reinforcement‑learning position sizing"
-  - "Add multi‑modal support to doc-intel-api"
+  - "Extend kalshi_bot with reinforcement-learning position sizing"
+  - "Add multi-modal support to doc-intel-api"
+  - "Deploy Framework as a self-hosted service"
 exploring:
-  - "Small‑scale MLOps (MLflow, DVC) on a home server"
-  - "Contributing to open‑source Python tooling"
+  - "Small-scale MLOps (MLflow, DVC) on a home server"
+  - "Contributing to open-source Python tooling"
 open_to:
-  - "Mentorship from senior Python engineers"
-  - "Part‑time internship / apprenticeship"
-  - "Collaborative open‑source projects"
+  - "Mentorship from senior engineers"
+  - "Part-time internship / apprenticeship"
+  - "Collaborative open-source projects"
 ```
 
 ---
 
 ### Connect
 
-- **Email** – david.escoto.dev@gmail.com
-- **LinkedIn** – https://linkedin.com/in/davidescoto
-- **GitHub** – https://github.com/DavidEscotoDev
+<p align="center">
+  <a href="mailto:real.david.escoto@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail" /></a>
+  <a href="https://github.com/DavidEscotoDev" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="github" /></a>
+</p>
 
 ---
 
-*“Code is a way to turn curiosity into something that runs.”*
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" alt="footer" />
+</p>
+
+<p align="center">
+  <i>"Code is a way to turn curiosity into something that runs."</i>
+</p>
+
+<p align="center">
+  <sub>Built from scratch at 16. Always building.</sub>
+</p>
