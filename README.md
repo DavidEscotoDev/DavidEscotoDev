@@ -190,10 +190,10 @@ Each certification represents a milestone in a structured engineering education 
 
 ---
 
-### GitHub Analytics
+### GitHub Activity
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="github stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true&rank_icon=percentile&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage" alt="github stats" />
 </p>
 
 <p align="center">
@@ -202,14 +202,6 @@ Each certification represents a milestone in a structured engineering education 
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DavidEscotoDev&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="top languages" />
-</p>
-
----
-
-### GitHub Trophies
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=DavidEscotoDev&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&column=7" alt="trophies" />
 </p>
 
 ---
