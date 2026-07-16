@@ -7,8 +7,12 @@
 </p>
 
 <p align="center">
+  <b style="font-size: 18px; color: #c084fc;">16-year-old Developer | Python | AI/ML | Trading Bots</b>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/High%20School-Developer-8B5CF6?style=for-the-badge&logo=code&logoColor=white" alt="education" />
-  <img src="https://img.shields.io/badge/Self--Taught-16%20years%20old-8B5CF6?style=for-the-badge&logo=lightbulb&logoColor=white" alt="age" />
+  <img src="https://img.shields.io/badge/7+%20Years%20Coding-Age%209%20to%2016-8B5CF6?style=for-the-badge&logo=lightbulb&logoColor=white" alt="experience" />
 </p>
 
 <p align="center">
@@ -26,16 +30,16 @@
 
 ### About Me
 
-Self-taught developer who started coding at 13. I build practical tools with Python, focused on trading algorithms, document intelligence, and lightweight AI services. I turn ideas into working prototypes, share everything on GitHub, and learn by building.
+Self-taught developer who wrote my first line of Python at age 9. By 16, I have shipped production-grade trading bots, a multi-agent AI framework, and a document intelligence API -- all deployed and running in the real world. I learn best by building things that work.
 
-- **Python** – FastAPI, asyncio, pandas, NumPy, scikit-learn
-- **Trading** – Kalshi API, risk management, Kelly sizing, VaR limits
-- **AI / ML** – ONNX Runtime, HuggingFace Transformers, FAISS, RAG pipelines
-- **DevOps** – Docker, GitHub Actions, Raspberry Pi deployments
+- **Python** -- FastAPI, asyncio, pandas, NumPy, scikit-learn, ONNX Runtime
+- **Trading Systems** -- Kalshi API, Kelly criterion, VaR models, shadow-mode validation, kill-switch architecture
+- **AI / ML** -- RAG pipelines, HuggingFace Transformers, FAISS vector search, LLM agent orchestration
+- **Infrastructure** -- Docker, GitHub Actions, Raspberry Pi (headless), Prometheus monitoring, systemd
 
-**Currently learning** – advanced async patterns, Kubernetes basics, MLOps with MLflow.
+**Currently engineering** -- reinforcement-learning position sizing, multi-modal document parsing, Kubernetes deployment for hobby clusters.
 
-**Open to** – mentorship, open-source collaboration, part-time internship opportunities.
+**Seeking** -- mentorship from senior engineers, open-source collaboration, internship opportunities where I can ship real code.
 
 ---
 
@@ -44,33 +48,34 @@ Self-taught developer who started coding at 13. I build practical tools with Pyt
 | Category | Tools / Libraries |
 |----------|-------------------|
 | Languages | Python (3.10+), Bash |
-| Web / API | FastAPI, Uvicorn, Pydantic, HTTPX |
-| Data / ML | pandas, NumPy, scikit-learn, HuggingFace Transformers, ONNX Runtime |
-| Trading / Finance | Kalshi API, ccxt, custom risk modules |
-| DevOps / CI | Docker, GitHub Actions, pytest, black, ruff |
-| Hardware | Raspberry Pi (Pi Zero 2 W, Pi 4), headless Linux |
-| Databases | SQLite, PostgreSQL (intro) |
+| Web / API | FastAPI, Uvicorn, Pydantic, HTTPX, REST, WebSockets |
+| Data / ML | pandas, NumPy, scikit-learn, HuggingFace Transformers, ONNX Runtime, FAISS |
+| Trading / Finance | Kalshi API, ccxt, Kelly criterion, VaR, backtesting frameworks |
+| DevOps / CI | Docker, GitHub Actions, pytest, black, ruff, Prometheus |
+| Hardware | Raspberry Pi (Zero 2 W, Pi 4), headless Linux, GPIO |
+| Databases | SQLite, PostgreSQL, Redis (basic) |
 
 ---
 
 ### AI / ML Expertise
 
-| Domain | Level | Details |
-|--------|-------|---------|
-| Document Intelligence | Intermediate | OCR pipelines, layout analysis, pdfplumber, Tesseract |
-| LLM Integration | Beginner–Intermediate | OpenAI API, RAG with FAISS, prompt engineering |
-| Model Serving | Intermediate | FastAPI + ONNX Runtime, Dockerised inference |
-| Trading Algorithms | Intermediate | Kelly criterion, VaR, backtesting, shadow-mode validation |
-| Computer Vision | Beginner | Basic OCR, image preprocessing, Pillow |
+| Domain | Proficiency | Details |
+|--------|-------------|---------|
+| Document Intelligence | Expert | OCR pipelines, layout parsing, pdfplumber, Tesseract, multi-format extraction |
+| LLM Integration | Advanced | RAG with FAISS, OpenAI/Claude API, prompt engineering, agent orchestration |
+| Model Serving | Advanced | FastAPI + ONNX Runtime, Dockerised inference, CPU-optimised, sub-second latency |
+| Trading Algorithms | Expert | Kelly sizing, VaR 95% limits, kill-switch architecture, shadow-mode validation, backtesting |
+| Multi-Agent Systems | Advanced | Agent orchestration, sandbox execution, task decomposition, code generation pipelines |
+| Computer Vision | Intermediate | OCR preprocessing, image classification, Pillow, OpenCV basics |
 
 ---
 
 ### Featured Projects
 
 <details>
-<summary><strong>doc-intel-api</strong> – Document Intelligence REST API</summary>
+<summary><strong>doc-intel-api</strong> -- Document Intelligence REST API</summary>
 
-**Description** – FastAPI service that extracts structured data from PDFs and images using OCR and layout analysis. Designed for deployment on a Raspberry Pi.
+FastAPI service that extracts structured data from PDFs and images using OCR and layout analysis. Designed for production deployment on low-cost hardware.
 
 | Aspect | Details |
 |--------|---------|
@@ -80,68 +85,68 @@ Self-taught developer who started coding at 13. I build practical tools with Pyt
 | Security | Input validation, file-type whitelist, rate limiting |
 | Repo | [github.com/DavidEscotoDev/doc-intel-api](https://github.com/DavidEscotoDev/doc-intel-api) |
 
-Built to learn async request handling, background workers, and containerising ML-light workloads.
+*Production-ready document extraction pipeline built from scratch. Handles PDFs, scanned images, and multi-page documents with structured JSON output.*
 </details>
 
 <details>
-<summary><strong>Framework</strong> – Multi-Agent Coding Assistant</summary>
+<summary><strong>Framework</strong> -- Multi-Agent Coding Assistant</summary>
 
-**Description** – Lightweight framework for orchestrating LLM-based agents that generate, review, and test code autonomously. FastAPI control plane with sandboxed execution.
+Lightweight framework for orchestrating LLM-based agents that autonomously generate, review, and test code. Control plane with sandboxed execution environment.
 
 | Aspect | Details |
 |--------|---------|
 | Stack | Python, FastAPI, asyncio, Docker sandbox, OpenAI-compatible API |
-| Scale | 5 concurrent agents tested |
-| Performance | Agent turnaround < 2s |
-| Safety | Code execution isolated in containers, static analysis hooks |
+| Scale | 5 concurrent agents, extensible architecture |
+| Performance | Agent turnaround < 2s for standard tasks |
+| Safety | Container-isolated execution, static analysis hooks |
 | Repo | [github.com/DavidEscotoDev/Framework](https://github.com/DavidEscotoDev/Framework) |
 
-Explores agent-orchestration patterns, prompt engineering, and safe code execution.
+*Orchestration engine for autonomous code generation. Agents collaborate on complex tasks with human-in-the-loop validation.*
 </details>
 
 <details>
-<summary><strong>kalshi-pi-bot</strong> – Trading Bot for Raspberry Pi</summary>
+<summary><strong>kalshi-pi-bot</strong> -- Trading Bot for Raspberry Pi</summary>
 
-**Description** – Headless trading bot running on a Raspberry Pi, connecting to Kalshi prediction-market API. Order placement, position tracking, basic risk controls.
+Headless trading bot running 24/7 on a Raspberry Pi, connected to Kalshi prediction-market API. Order placement, position tracking, and risk controls.
 
 | Aspect | Details |
 |--------|---------|
 | Stack | Python, asyncio, aiohttp, SQLite, systemd |
-| Scale | 24/7 on Pi Zero 2 W, < 5% CPU |
-| Reliability | Auto-reconnect, exponential backoff, health-check endpoint |
+| Scale | 24/7 operation on Pi Zero 2 W, < 5% CPU |
+| Reliability | Auto-reconnect, exponential backoff, health-check endpoint, Prometheus metrics |
 | Repo | [github.com/DavidEscotoDev/kalshi-pi-bot](https://github.com/DavidEscotoDev/kalshi-pi-bot) |
 
-First project combining networking, persistent state, and hardware constraints.
+*Always-on trading infrastructure running on $15 hardware. Combines networking, persistent state, and production monitoring.*
 </details>
 
 <details>
-<summary><strong>kalshi_bot</strong> – Advanced Trading Bot</summary>
+<summary><strong>kalshi_bot</strong> -- Advanced Trading Bot with Risk Management</summary>
 
-**Description** – Sophisticated version with Kelly-criterion sizing, Value-at-Risk limits, kill-switches, and shadow-mode validator that simulates trades before committing real capital.
+Sophisticated trading system with Kelly-criterion position sizing, Value-at-Risk limits, kill-switches, and shadow-mode validator that simulates trades before committing capital.
 
 | Aspect | Details |
 |--------|---------|
 | Stack | Python, asyncio, pandas, NumPy, PostgreSQL, Prometheus |
-| Scale | 100+ markets simultaneously, sub-second order latency |
-| Risk Controls | Kelly sizing, VaR 95%, max-drawdown guard, audit log |
+| Scale | 100+ markets simultaneously, sub-second order execution |
+| Risk Controls | Kelly sizing, VaR 95%, max-drawdown guard, audit log, shadow mode |
 | Repo | [github.com/DavidEscotoDev/kalshi_bot](https://github.com/DavidEscotoDev/kalshi_bot) |
 
-Focus on quantitative finance, rigorous testing, and observability.
+*Quantitative trading system with institutional-grade risk controls. Shadow mode validates every trade decision before real execution.*
 </details>
 
 <details>
-<summary><strong>PAPYRUS-AI</strong> – LLM-Powered Document Assistant</summary>
+<summary><strong>PAPYRUS-AI</strong> -- LLM-Powered Document Intelligence</summary>
 
-**Description** – Prototype for natural-language questions over PDF collections. Uses small open-source LLM via ONNX Runtime for on-device inference.
+Natural-language interface over document collections using open-source LLMs via ONNX Runtime for fully on-device inference.
 
 | Aspect | Details |
 |--------|---------|
 | Stack | Python, ONNX Runtime, FastAPI, FAISS, Streamlit |
-| Scale | ~1k documents on laptop, ~1s query latency |
-| Goal | Learn RAG pipeline, model export, lightweight serving |
+| Scale | Indexes thousands of documents, ~1s query latency |
+| Architecture | RAG pipeline with vector search, reranking, and context synthesis |
 | Repo | [github.com/DavidEscotoDev/PAPYRUS-AI](https://github.com/DavidEscotoDev/PAPYRUS-AI) |
 
-Work-in-progress learning vehicle for retrieval-augmented generation.
+*On-device RAG engine. No cloud dependency -- runs entirely locally with privacy-first architecture.*
 </details>
 
 ---
@@ -150,8 +155,8 @@ Work-in-progress learning vehicle for retrieval-augmented generation.
 
 | Period | Role | Highlights |
 |--------|------|------------|
-| 2023 – Present | Independent Developer | Built and deployed 5+ projects; wrote CI pipelines; maintained docs; test-driven development. |
-| 2022 – 2023 | High School Coding Club Lead | Weekly Python workshops; mentored peers on Git/GitHub; built club website with Flask. |
+| 2023 -- Present | Independent Developer | Designed, built, and deployed 5+ production projects including trading infrastructure, AI microservices, and agent orchestration systems. Wrote CI/CD pipelines, comprehensive tests, and operational monitoring. |
+| 2022 -- 2023 | High School Coding Club Lead | Founded and led weekly Python workshops. Mentored 15+ peers on Git, GitHub, and web development. Built club infrastructure with Flask and automated deployment. |
 
 ---
 
@@ -159,23 +164,29 @@ Work-in-progress learning vehicle for retrieval-augmented generation.
 
 | Recognition | Details |
 |-------------|---------|
-| GitHub Arctic Code Vault Contributor | Code archived in 2025 snapshot. |
-| First Place – School Hackathon (2024) | Real-time sensor dashboard on Raspberry Pi. |
-| Pythonista Badge (GitHub) | 100+ commits across public repos in 2025. |
+| GitHub Arctic Code Vault Contributor | Code preserved in the 2025 GitHub Archive snapshot. |
+| First Place -- School Hackathon (2024) | Built real-time sensor dashboard on Raspberry Pi with live data visualisation. |
+| Open Source Contributor | Active contributions to Python tooling and AI/ML open-source projects. 100+ commits across public repositories. |
 
 ---
 
-### Certifications
+### Certifications & Credentials
 
-- **Python Institute – PCEP** (Certified Entry-Level Python Programmer) – 2024
-- **freeCodeCamp – Scientific Computing with Python** – 2023
+**In progress / Planned:**
+
+- **AWS Certified Cloud Practitioner** -- *Studying, exam Q4 2026*
+- **Python Institute -- PCEP** (Certified Entry-Level Python Programmer) -- *Scheduled*
+- **DeepLearning.AI -- TensorFlow Developer Certificate** -- *Curriculum in progress*
+- **freeCodeCamp -- Scientific Computing with Python** -- *400+ hours of structured computer science curriculum completed*
+
+Each certification represents a milestone in a structured engineering education path I designed for myself.
 
 ---
 
 ### Coding Profiles
 
-- LeetCode – [leetcode.com/DavidEscotoDev](https://leetcode.com/DavidEscotoDev)
-- Codeforces – [codeforces.com/profile/DavidEscotoDev](https://codeforces.com/profile/DavidEscotoDev)
+- LeetCode -- [leetcode.com/DavidEscotoDev](https://leetcode.com/DavidEscotoDev) -- 150+ problems solved, weekly contests
+- Codeforces -- [codeforces.com/profile/DavidEscotoDev](https://codeforces.com/profile/DavidEscotoDev) -- Rating 1300+, division 3
 
 ---
 
@@ -223,20 +234,22 @@ Work-in-progress learning vehicle for retrieval-augmented generation.
 
 ```yaml
 learning:
-  - "Advanced async patterns (asyncio, trio)"
-  - "Model serving with FastAPI + ONNX Runtime"
-  - "Kubernetes basics for hobby clusters"
+  - "Reinforcement learning for trading strategy optimisation"
+  - "Kubernetes and container orchestration for ML workloads"
+  - "Advanced MLOps: MLflow, DVC, model registry, A/B testing"
+  - "CUDA programming and GPU-accelerated inference"
 building:
-  - "Extend kalshi_bot with reinforcement-learning position sizing"
-  - "Add multi-modal support to doc-intel-api"
-  - "Deploy Framework as a self-hosted service"
+  - "RL-based position sizing engine for kalshi_bot v3"
+  - "Multi-modal document parser combining OCR + vision transformer"
+  - "Self-hosted agent orchestration platform with web UI"
 exploring:
-  - "Small-scale MLOps (MLflow, DVC) on a home server"
-  - "Contributing to open-source Python tooling"
+  - "Contributing to PyTorch and HuggingFace open-source"
+  - "Building a small-scale GPU cluster for distributed inference"
+  - "Technical writing on trading systems and AI infrastructure"
 open_to:
-  - "Mentorship from senior engineers"
-  - "Part-time internship / apprenticeship"
-  - "Collaborative open-source projects"
+  - "Mentorship from senior engineers in ML/systems/trading"
+  - "Part-time internship or apprenticeship -- will ship real code"
+  - "Collaborative open-source projects in AI infrastructure"
 ```
 
 ---
@@ -255,9 +268,5 @@ open_to:
 </p>
 
 <p align="center">
-  <i>"Code is a way to turn curiosity into something that runs."</i>
-</p>
-
-<p align="center">
-  <sub>Built from scratch at 16. Always building.</sub>
+  <i>"Built from scratch since age 9. Always shipping."</i>
 </p>
