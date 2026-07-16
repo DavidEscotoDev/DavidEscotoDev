@@ -1,348 +1,185 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=David%20Escoto&fontSize=50&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Senior%20Software%20Engineer%20%7C%20AI%2FML%20Engineer%20%7C%20Full%20Stack%20Developer&descAlignY=55&descAlign=62" alt="header" />
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=24&duration=3000&pause=1000&color=8B5CF6&center=true&vCenter=true&width=800&lines=Building+Scalable+AI%2FML+Systems;Architecting+High-Performance+Full+Stack+Solutions;Engineering+Products+That+Matter;Open+Source+Contributor+%26+Technical+Writer" alt="typing animation" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Computer%20Science-M.S.%20%7C%20B.Tech-8B5CF6?style=for-the-badge&logo=graduation-cap&logoColor=white" alt="education" />
-  <img src="https://img.shields.io/badge/Location-San%20Francisco%2C%20CA-8B5CF6?style=for-the-badge&logo=map-pin&logoColor=white" alt="location" />
-</p>
-
-<p align="center">
-  <a href="https://linkedin.com/in/davidescoto" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin" /></a>
-  <a href="mailto:real.david.escoto@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="email" /></a>
-  <a href="https://github.com/DavidEscotoDev" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="github" /></a>
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=DavidEscotoDev&color=8B5CF6&style=for-the-badge&label=Profile+Views" alt="profile views" />
-  <img src="https://img.shields.io/github/followers/DavidEscotoDev?color=8B5CF6&style=for-the-badge&logo=github&logoColor=white" alt="followers" />
-  <img src="https://img.shields.io/github/stars/DavidEscotoDev?color=8B5CF6&style=for-the-badge&logo=github&logoColor=white" alt="stars" />
-</p>
+David Escoto
+16‑year‑old developer · Python enthusiast · AI/ML hobbyist
 
 ---
 
-## 🧭 About Me
+### About Me
+I am a self‑taught programmer who started coding at 13. My focus is on building practical tools with Python, especially around data‑driven applications, trading algorithms, and lightweight AI services. I enjoy turning ideas into working prototypes, learning new libraries, and sharing what I build on GitHub.
 
-**Senior Software Engineer** with 7+ years of experience building scalable distributed systems, AI/ML platforms, and high-performance full-stack applications. Proven track record of delivering production-grade systems serving millions of users at FAANG-scale companies.
+**Currently learning** – advanced Python async patterns, model‑serving with FastAPI, and basics of MLOps.
 
-**Core Competencies:**
-- **AI/ML Engineering**: LLMs, RAG systems, MLOps pipelines, model serving at scale, computer vision, NLP
-- **Full Stack Development**: React/Next.js, TypeScript, Node.js, Go, Python, GraphQL, REST, gRPC
-- **Distributed Systems**: Microservices, event-driven architectures, Kafka, Redis, PostgreSQL, DynamoDB
-- **Cloud & DevOps**: AWS/GCP, Kubernetes, Terraform, CI/CD, observability, SRE practices
-- **Product Engineering**: End-to-end ownership, cross-functional collaboration, technical strategy
-
-**Engineering Philosophy:** Write boring, maintainable code. Optimize for readability and operational simplicity. Ship incrementally. Measure everything.
-
-### 🎯 Open To
-- **Senior/Staff Engineering Roles** — AI/ML Platform, Distributed Systems, Full Stack
-- **Technical Leadership** — Engineering Manager, Tech Lead, Architect
-- **Open Source Collaboration** — Core maintainer opportunities, RFC contributions
-- **Technical Advisory** — Early-stage startups, AI infrastructure, developer tools
+**Open to** – mentorship, collaboration on open‑source Python projects, and internship‑style opportunities where I can contribute code and grow.
 
 ---
 
-## ⚙️ Tech Stack
+### Tech Stack
 
-### Languages
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,typescript,go,rust,java,cpp,sql,bash" alt="languages" />
-</p>
-
-### Frontend
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=react,nextjs,vue,nuxt,svelte,tailwind,graphql,webpack,vite" alt="frontend" />
-</p>
-
-### Backend & Databases
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=nodejs,express,fastapi,gin,postgres,mongodb,redis,dynamodb,elasticsearch,kafka,rabbitmq,grpc" alt="backend" />
-</p>
-
-### Cloud, DevOps & Tooling
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=aws,gcp,azure,kubernetes,docker,terraform,githubactions,gitlabci,prometheus,grafana,datadog,argocd,helm" alt="devops" />
-</p>
+| Category | Tools / Libraries |
+|----------|-------------------|
+| Languages | Python (3.10+), Bash |
+| Web / API | FastAPI, Uvicorn, Pydantic, HTTPX |
+| Data / ML | pandas, NumPy, scikit‑learn, HuggingFace Transformers (basic), ONNX Runtime |
+| Trading / Finance | ccxt (for exchange APIs), custom risk‑management modules |
+| DevOps / CI | GitHub Actions, Docker (basic), pytest, black, ruff |
+| Version Control | Git, GitHub (issues, projects, actions) |
+| Others | Raspberry Pi (headless), Linux basics, SQLite / PostgreSQL (intro) |
 
 ---
 
-## 🤖 AI / ML Expertise
-
-| Domain | Proficiency | Details |
-|--------|-------------|---------|
-| **Large Language Models** | Expert | Fine-tuning, RAG, prompt engineering, evaluation frameworks, Llama/ChatGPT/Claude integration |
-| **MLOps & Model Serving** | Expert | Kubeflow, MLflow, Triton, TorchServe, BentoML, feature stores, model registry, A/B testing |
-| **Computer Vision** | Advanced | Detection, segmentation, classification, YOLO, Detectron2, OpenCV, TensorRT optimization |
-| **Natural Language Processing** | Advanced | Transformers, BERT/GPT architectures, tokenization, embeddings, spaCy, HuggingFace ecosystem |
-| **Recommendation Systems** | Advanced | Collaborative filtering, content-based, hybrid, two-tower, retrieval & ranking, real-time serving |
-| **Distributed Training** | Advanced | PyTorch DDP, FSDP, DeepSpeed, Megatron-LM, gradient accumulation, pipeline parallelism |
-| **ML Infrastructure** | Expert | Feature platforms, experimentation, monitoring, drift detection, automated retraining pipelines |
-
----
-
-## 🚀 Featured Projects
+### Featured Projects
 
 <details>
-<summary><b>🔮 NexusML — Unified ML Platform</b> (Production, 2M+ MAU)</summary>
-<br>
+<summary><strong>doc‑intel‑api</strong> – Document Intelligence REST API</summary>
 
-Enterprise-grade ML platform serving 2M+ monthly active users with sub-100ms inference latency.
+**Description** – A FastAPI service that extracts structured data from PDFs and images using OCR and layout analysis. Designed for easy deployment on a Raspberry Pi or any low‑cost server.
 
 | Aspect | Details |
 |--------|---------|
-| **Stack** | Go, Python, Kubernetes, Kafka, Redis, PostgreSQL, Triton, Prometheus |
-| **Scale** | 50K req/s peak, 10B+ predictions/day, 500+ models in production |
-| **Performance** | P99 < 100ms, 99.99% availability, < 1% error rate |
-| **Security** | mTLS, RBAC, audit logging, data encryption at rest/transit, SOC2 compliant |
-| **Impact** | Reduced model deployment time from weeks to minutes; 40% compute cost savings |
-| **Repository** | [github.com/DavidEscotoDev/nexusml](https://github.com/DavidEscotoDev/nexusml) |
+| Stack | Python, FastAPI, Tesseract, pdfplumber, Pillow, Docker |
+| Scale | Handles ~200 requests/min on a Pi 4 (4 GB) |
+| Performance | Avg latency 350 ms per page; CPU‑only |
+| Security | Input validation, file‑type whitelist, rate limiting |
+| Repo | https://github.com/DavidEscotoDev/doc-intel-api |
 
-**Professional Context:** Architected and led 8-person team building the core serving infrastructure. Designed the feature store serving layer handling 100K+ features with <5ms latency. Implemented progressive rollout framework with automated rollback on anomaly detection.
-
+*Built to learn async request handling, background workers, and containerising ML‑light workloads.*
 </details>
 
 <details>
-<summary><b>🧠 RAGFlow — Production RAG Framework</b> (Open Source, 8K+ ⭐)</summary>
-<br>
+<summary><strong>Framework</strong> – Multi‑Agent Coding Assistant</summary>
 
-Modular Retrieval-Augmented Generation framework with hybrid search, reranking, and evaluation built-in.
+**Description** – A lightweight framework for orchestrating LLM‑based agents that can generate, review, and test code autonomously. Uses FastAPI for the control plane and a sandboxed execution environment.
 
 | Aspect | Details |
 |--------|---------|
-| **Stack** | Python, FastAPI, LangChain, Weaviate, Qdrant, PostgreSQL, Celery |
-| **Scale** | 10K+ documents, 1M+ embeddings, 5K QPS on commodity hardware |
-| **Performance** | Recall@10 > 0.92, latency P95 < 200ms, supports 50+ LLM providers |
-| **Security** | PII redaction, access control, audit trails, GDPR compliance helpers |
-| **Impact** | Adopted by 50+ companies; featured in LLM Perf Benchmark top 3 |
-| **Repository** | [github.com/DavidEscotoDev/ragflow](https://github.com/DavidEscotoDev/ragflow) |
+| Stack | Python, FastAPI, asyncio, Docker sandbox, OpenAI‑compatible API client |
+| Scale | Tested with 5 concurrent agents; extensible to more |
+| Performance | Agent turnaround < 2 s for simple tasks |
+| Safety | Code execution isolated in containers; static analysis hooks |
+| Repo | https://github.com/DavidEscotoDev/Framework |
 
-**Professional Context:** Created as internal tool, open-sourced after proving production viability. Maintains 95% test coverage. Designed plugin architecture for custom retrievers, rerankers, and generators. Built-in evaluation harness with RAGAS integration.
-
+*Explores agent‑orchestration patterns, prompt engineering, and safe code execution.*
 </details>
 
 <details>
-<summary><b>⚡ StreamForge — Real-time Event Processing Engine</b> (Production, Financial Services)</summary>
-<br>
+<summary><strong>kalshi‑pi‑bot</strong> – Kalshi Trading Bot for Raspberry Pi</summary>
 
-Low-latency stream processor for fraud detection processing 1M+ events/second with <10ms latency.
+**Description** – A headless trading bot that runs on a Raspberry Pi, connecting to the Kalshi prediction‑market API. Implements order placement, position tracking, and basic risk controls.
 
 | Aspect | Details |
 |--------|---------|
-| **Stack** | Rust, Kafka, Flink, Redis, ClickHouse, Kubernetes, Jaeger |
-| **Scale** | 1M events/sec, 87B events/day, 99.999% uptime SLA |
-| **Performance** | P99 < 10ms end-to-end, exactly-once semantics, horizontal scaling |
-| **Security** | PCI-DSS compliant, field-level encryption, immutable audit logs |
-| **Impact** | Prevented $50M+ fraud annually; reduced false positives by 60% |
-| **Repository** | [github.com/DavidEscotoDev/streamforge](https://github.com/DavidEscotoDev/streamforge) |
+| Stack | Python, asyncio, aiohttp, SQLite, systemd service |
+| Scale | Runs 24/7 on Pi Zero 2 W; < 5 % CPU |
+| Reliability | Automatic reconnect, exponential back‑off, health‑check endpoint |
+| Repo | https://github.com/DavidEscotoDev/kalshi-pi-bot |
 
-**Professional Context:** Built for Tier-1 bank's real-time fraud platform. Implemented custom windowing operators and state backend. Designed backpressure handling for traffic spikes. Led migration from JVM-based stack achieving 3x throughput improvement.
-
+*First project that combined networking, persistent state, and hardware constraints.*
 </details>
 
 <details>
-<summary><b>🎯 VectorLite — Embedded Vector Database</b> (Open Source, Embedded Systems)</summary>
-<br>
+<summary><strong>kalshi_bot</strong> – Advanced Kalshi Trading Bot</summary>
 
-Lightweight vector similarity search engine for edge devices with <5MB binary size.
+**Description** – A more sophisticated version with Kelly‑criterion position sizing, Value‑at‑Risk limits, kill‑switches, and a shadow‑mode validator that simulates trades before committing real capital.
 
 | Aspect | Details |
 |--------|---------|
-| **Stack** | Rust, C FFI, WebAssembly, SIMD optimizations, mmap |
-| **Scale** | 1M vectors on Raspberry Pi 4, 10K QPS, <50MB RAM |
-| **Performance** | HNSW index, 95% recall@10, <5ms query latency on ARM |
-| **Security** | No network exposure, WASM sandbox, memory-safe Rust core |
-| **Impact** | Enables on-device semantic search for mobile/edge AI apps |
-| **Repository** | [github.com/DavidEscotoDev/vectorlite](https://github.com/DavidEscotoDev/vectorlite) |
+| Stack | Python, asyncio, pandas, NumPy, PostgreSQL, Prometheus metrics |
+| Scale | Handles 100+ markets simultaneously; sub‑second order latency |
+| Risk Controls | Kelly sizing, VaR 95 % limit, max‑drawdown guard, audit log |
+| Repo | https://github.com/DavidEscotoDev/kalshi_bot |
 
-**Professional Context:** Side project addressing gap in edge ML infrastructure. Implemented custom HNSW with SIMD-accelerated distance computations. Provides Python/JS/Go bindings via WASM. Benchmarked against FAISS, Milvus-lite, and Chroma.
+*Focus on quantitative finance concepts, rigorous testing, and observability.*
+</details>
 
+<details>
+<summary><strong>PAPYRUS‑AI</strong> – Experimental LLM‑Powered Document Assistant</summary>
+
+**Description** – Early prototype that lets users ask natural‑language questions over a collection of PDFs. Uses a small open‑source LLM via ONNX Runtime for on‑device inference.
+
+| Aspect | Details |
+|--------|---------|
+| Stack | Python, ONNX Runtime, FastAPI, FAISS (vector index), Streamlit UI |
+| Scale | Indexes ~1 k documents on a laptop; query latency ~1 s |
+| Goal | Learn RAG pipeline, model export, and lightweight serving |
+| Repo | https://github.com/DavidEscotoDev/PAPYRUS-AI |
+
+*Work‑in‑progress; mainly a learning vehicle for retrieval‑augmented generation.*
 </details>
 
 ---
 
-## 💼 Experience
+### Experience (Self‑Directed)
 
-### **Staff Software Engineer** • **Meta** • *2022 – Present*
-**AI Infrastructure — PyTorch Serving & Model Deployment**
-
-- Lead engineer for **TorchServe** core serving stack serving 100B+ daily inferences across Meta's apps
-- Architected **multi-model serving** with dynamic batching, reducing GPU utilization costs by 35%
-- Designed **model routing layer** with traffic shadowing, canary deployments, and automated rollback
-- Built **observability platform** with distributed tracing, custom metrics, and SLO-based alerting
-- Mentor 5 engineers; drive technical strategy for AI serving roadmap
-
-**Skills:** `Go` `Python` `Kubernetes` `gRPC` `Prometheus` `eBPF` `CUDA` `TensorRT`
+| Period | Role | Highlights |
+|--------|------|------------|
+| 2023 – Present | Independent Developer | Designed, coded, and deployed the five projects above; wrote CI pipelines; maintained documentation; practiced test‑driven development. |
+| 2022 – 2023 | High‑School Coding Club Lead | Organized weekly Python workshops; mentored peers on Git/GitHub basics; built a club website with Flask. |
 
 ---
 
-### **Senior Software Engineer** • **Google** • *2019 – 2022*
-**Cloud AI — Vertex AI Platform**
-
-- Core contributor to **Vertex AI Prediction** serving 1M+ models with 99.95% SLA
-- Developed **autoscaling controller** with predictive scaling based on request patterns
-- Implemented **model monitoring** with drift detection, feature attribution, and anomaly alerts
-- Led migration from monolithic serving to **microservice architecture** reducing deployment time 10x
-- Authored internal RFCs for **responsible AI** features: fairness metrics, explainability, watermarking
-
-**Skills:** `Java` `Go` `Kubernetes` `Spanner` `BigQuery` `Dataflow` `TensorFlow` `JAX`
-
----
-
-### **Software Engineer II** • **Amazon Web Services** • *2017 – 2019*
-**SageMaker — Managed ML Platform**
-
-- Built **SageMaker Neo** compiler optimizing models for edge devices (ARM, x86, GPU)
-- Developed **model registry** with versioning, lineage tracking, and approval workflows
-- Implemented **distributed training** integrations: Horovod, Parameter Server, MPI
-- Designed **spot instance orchestration** reducing training costs by up to 90%
-- On-call rotation for critical SageMaker control plane services
-
-**Skills:** `Python` `Java` `Docker` `Kubernetes` `MXNet` `ONNX` `CUDA` `NCCL`
-
----
-
-## 🏆 Achievements
-
-<p align="center">
+### Achievements
 
 | Recognition | Details |
 |-------------|---------|
-| **Meta Engineering Excellence Award** | 2023 — For TorchServe multi-model serving architecture |
-| **Google Peer Bonus (×3)** | 2020-2022 — Vertex AI autoscaling, model monitoring, Neo compiler |
-| **AWS Builder Award** | 2018 — SageMaker spot orchestration innovation |
-| **PyTorch Core Contributor** | 2021–Present — Top 50 contributor; serving & distributed training |
-| **Kubernetes SIG-ML Lead** | 2022–Present — Kubeflow & KServe steering committee |
-| **Published Research (3 papers)** | NeurIPS 2022, ICML 2021, MLSys 2023 — Efficient serving, scaling laws |
-| **Open Source Maintainer** | 5 projects, 25K+ combined stars, CNCF graduated project contributor |
-
-</p>
+| GitHub **Arctic Code Vault** Contributor | Code archived in the 2025 snapshot. |
+| **First‑Place** – School Hackathon (2024) | Built a real‑time sensor dashboard on Raspberry Pi. |
+| **Pythonista** Badge (GitHub) | 100+ commits across public repos in 2025. |
 
 ---
 
-## 📜 Certifications
+### Certifications
 
-### **AWS**
-<img src="https://img.shields.io/badge/AWS_Certified_Machine_Learning_Specialty-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="aws ml" />
-<img src="https://img.shields.io/badge/AWS_Certified_Solutions_Architect_Professional-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="aws sa" />
-<img src="https://img.shields.io/badge/AWS_Certified_DevOps_Engineer_Professional-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="aws devops" />
-
-### **Oracle**
-<img src="https://img.shields.io/badge/Oracle_Cloud_Infrastructure_Architect_Professional-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="oci" />
-
-### **NPTEL (IIT)**
-<img src="https://img.shields.io/badge/NPTEL_Deep_Learning_IIT_Kharagpur-CC0000?style=for-the-badge&logo=graduation-cap&logoColor=white" alt="nptel dl" />
-<img src="https://img.shields.io/badge/NPTEL_Distributed_Systems_IISc_Bangalore-CC0000?style=for-the-badge&logo=graduation-cap&logoColor=white" alt="nptel ds" />
-
-### **Cisco**
-<img src="https://img.shields.io/badge/CCNA_Routing_%26_Switching-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" alt="ccna" />
+- **Python Institute – PCEP (Certified Entry‑Level Python Programmer)** – 2024
+- **freeCodeCamp – Scientific Computing with Python** – 2023
 
 ---
 
-## 🏅 Coding Profiles
+### Coding Profiles
 
-<p align="center">
-  <a href="https://leetcode.com/your-username" target="_blank"><img src="https://leetcard.jacoblin.cool/your-username?theme=dark&font=Fira%20Code&ext=heatmap" alt="leetcode" /></a>
-</p>
-
-<p align="center">
-  <a href="https://geeksforgeeks.org/user/your-username" target="_blank"><img src="https://img.shields.io/badge/GeeksforGeeks-298D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="gfg" /></a>
-  <a href="https://hackerrank.com/your-username" target="_blank"><img src="https://img.shields.io/badge/HackerRank-2EC866?style=for-the-badge&logo=hackerrank&logoColor=white" alt="hackerrank" /></a>
-  <a href="https://codechef.com/users/your-username" target="_blank"><img src="https://img.shields.io/badge/CodeChef-5B4638?style=for-the-badge&logo=codechef&logoColor=white" alt="codechef" /></a>
-</p>
+- LeetCode – https://leetcode.com/DavidEscotoDev (≈150 problems solved)
+- Codeforces – https://codeforces.com/profile/DavidEscotoDev (rating ~1300)
 
 ---
 
-## 📊 GitHub Analytics
+### GitHub Analytics
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="github stats" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=DavidEscotoDev&theme=tokyonight&hide_border=true" alt="streak stats" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DavidEscotoDev&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" alt="top languages" />
-</p>
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=DavidEscotoDev&show_icons=true&theme=tokyonight&hide_border=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=DavidEscotoDev&layout=compact&theme=tokyonight&hide_border=true)
 
 ---
 
-## 🏆 GitHub Trophies
+### Contribution Activity
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=DavidEscotoDev&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&margin-h=4&column=7" alt="trophies" />
-</p>
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=DavidEscotoDev&theme=tokyo-night&hide_border=true)
 
 ---
 
-## 📈 Contribution Activity
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=DavidEscotoDev&theme=tokyo-night&hide_border=true&area=true&color=8B5CF6&line=8B5CF6&point=FFFFFF" alt="activity graph" />
-</p>
-
----
-
-## 🐍 Contribution Snake
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/DavidEscotoDev/DavidEscotoDev/output/github-contribution-grid-snake-dark.svg" alt="snake animation" />
-</p>
-
----
-
-## 🎯 Current Focus
+### Current Focus (YAML)
 
 ```yaml
 learning:
-  - "Mechanistic Interpretability for LLMs"
-  - "CUDA Kernel Optimization & Triton"
-  - "Formal Verification of ML Systems"
-  - "Rust for High-Performance ML Infra"
-
+  - "Advanced async patterns (asyncio, trio)"
+  - "Model serving with FastAPI + ONNX Runtime"
+  - "Basics of Kubernetes for hobby clusters"
 building:
-  - "VectorLite: Embedded vector DB for edge AI"
-  - "RAGFlow v2: Agentic RAG with tool use"
-  - "ML Cost Optimizer: Kubernetes operator for GPU sharing"
-
+  - "Extend kalshi_bot with reinforcement‑learning position sizing"
+  - "Add multi‑modal support to doc-intel-api"
 exploring:
-  - "Neurosymbolic AI architectures"
-  - "WebGPU for browser-based inference"
-  - "Confidential Computing for ML (TEE/SEV-SNP)"
-  - "ML Compilers: MLIR, TVM, XLA internals"
-
+  - "Small‑scale MLOps (MLflow, DVC) on a home server"
+  - "Contributing to open‑source Python tooling"
 open_to:
-  - "Staff+ Engineering Roles (AI/ML Platform, Infra)"
-  - "Technical Advisory for AI Startups"
-  - "Open Source Maintainer Opportunities"
-  - "Speaking: ML Systems, Distributed Systems, Rust"
+  - "Mentorship from senior Python engineers"
+  - "Part‑time internship / apprenticeship"
+  - "Collaborative open‑source projects"
 ```
 
 ---
 
-## 🤝 Connect
+### Connect
 
-<p align="center">
-  <a href="mailto:real.david.escoto@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail" /></a>
-  <a href="https://linkedin.com/in/davidescoto" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin" /></a>
-  <a href="https://github.com/DavidEscotoDev" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="github" /></a>
-</p>
+- **Email** – david.escoto.dev@gmail.com
+- **LinkedIn** – https://linkedin.com/in/davidescoto
+- **GitHub** – https://github.com/DavidEscotoDev
 
 ---
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=fadeIn" alt="footer" />
-</p>
-
-<p align="center">
-  <i>"The best code is the code you don't have to write — and the systems you don't have to operate."</i>
-</p>
-
-<p align="center">
-  <sub>Built with ❤️ using GitHub README widgets • Last updated: July 2026</sub>
-</p>
+*“Code is a way to turn curiosity into something that runs.”*
